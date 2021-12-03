@@ -41,33 +41,17 @@ import BarChart from "./BarChart.vue";
 export default {
   name: "SimpleQuestion",
   components: {BarChart},
-  props: ['post_id', 'question', 'description', 'green', 'red', 'feedback', 'answers'],
+  props: ['post_id', 'question', 'description', 'green', 'red', 'feedback', 'answers_given'],
   data() {
     return {
       answered: false,
       answer_saved: false,
+      answers: this.answers_given,
       feedback_text: '',
       email: '',
       newsletter: false,
       show_results: false,
-      chartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        indexAxis: 'y',
-      },
-      chartdata: {
-        labels: [this.green, this.red],
-        datasets: [{
-          label: '',
-          data: [this.answers[this.green], this.answers[this.red]],
-          backgroundColor: [
-            '#064E3B',
-            '#7F1D1D',
-          ],
-          borderWidth: 0
-        }]
-      },
-
+      chartdata: {}
     }
   },
   mounted() {
@@ -105,8 +89,22 @@ export default {
       }))
           .then((response) => {
             Cookies.set('survey_' + this.post_id, true);
+
             this.show_results = true;
-          });
+
+            this.chartdata = {
+              labels: [this.green, this.red],
+              datasets: [{
+                label: '',
+                data: [this.answers[this.green], this.answers[this.red]],
+                backgroundColor: [
+                  '#064E3B',
+                  '#7F1D1D',
+                ],
+                borderWidth: 0
+              }]
+            };
+          })
     }
   }
 }

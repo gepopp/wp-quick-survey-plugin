@@ -36,7 +36,7 @@ class FrontendQuestion {
                     green="<?php echo $question['green'] ?>"
                     red="<?php echo $question['red'] ?>"
                     :feedback="<?php echo $question['feedback'] ?>"
-                    :answers='<?php echo json_encode($answers) ?>'
+                    :answers_given='<?php echo json_encode($answers) ?>'
             ></simple-question>
         </div>
 		<?php
