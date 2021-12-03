@@ -13,6 +13,15 @@ class Answers {
 		add_action( 'wp_ajax_qsy_save_answer_feedback', [ $this, 'save_answer_feedback' ] );
 		add_action( 'wp_ajax_nopriv_qsy_save_answer_feedback', [ $this, 'save_answer_feedback' ] );
 
+		add_action( 'wp_ajax_qsy_get_answers_count', [ $this, 'get_asnwers_count' ] );
+		add_action( 'wp_ajax_nopriv_qsy_get_answers_count', [ $this, 'get_asnwers_count' ] );
+
+	}
+
+	public function get_asnwers_count(){
+		$post_id = sanitize_text_field($_POST['post_id']);
+
+		wp_die(json_encode(self::answers_for_chart($post_id)));
 	}
 
 

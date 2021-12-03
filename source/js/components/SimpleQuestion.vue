@@ -25,7 +25,7 @@
 
     <div v-else>
       <h1 class="text-xl font-bold text-center" v-text="question"></h1>
-      <bar-chart :data="chartdata"></bar-chart>
+      <bar-chart :green="green" :red="red" :chart-data="chartdata" ref="chart"></bar-chart>
     </div>
 
 
@@ -51,16 +51,17 @@ export default {
       email: '',
       newsletter: false,
       show_results: false,
-      chartdata: {}
+      chartdata: {},
     }
   },
   mounted() {
 
-    console.log(this.answers)
+    this.updateChart();
 
     if (Cookies.get('survey_' + this.post_id) != undefined) {
       this.show_results = true;
     }
+
   },
   methods: {
     answer(value) {
@@ -89,22 +90,20 @@ export default {
       }))
           .then((response) => {
             Cookies.set('survey_' + this.post_id, true);
-
             this.show_results = true;
-
-            this.chartdata = {
-              labels: [this.green, this.red],
-              datasets: [{
-                label: '',
-                data: [this.answers[this.green], this.answers[this.red]],
-                backgroundColor: [
-                  '#064E3B',
-                  '#7F1D1D',
-                ],
-                borderWidth: 0
-              }]
-            };
+            this.updateChart();
           })
+    },
+    updateChart(){
+
+      var self = this;
+
+      Axios.post(qsy_xhr.ajaxurl, Qs.stringify({
+        action: 'qsy_get_answers_count',
+        post_id: this.post_id
+      })).then((rsp) => {
+        self.$refs.chart.updateChardata([rsp.data[this.green], rsp.data[this.red]]);
+      })
     }
   }
 }
