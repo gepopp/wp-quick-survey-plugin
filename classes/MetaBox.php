@@ -44,7 +44,7 @@ class MetaBox {
             </label>
         </div>
         <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'Frage zu diesem Beitrag', 'quick-survey' ) ?></label>
+            <label class="mb-3 font-semibold"><?php _e( 'Ja/Nein Frage zu diesem Beitrag', 'quick-survey' ) ?></label>
             <input type="text" class="block w-full border border-black" name="qsy[question]" value="<?php echo $value['question'] ?? '' ?>">
         </div>
         <div class="mb-4">
