@@ -6,23 +6,47 @@ class FrontendQuestion {
 
 
 	public function __construct() {
-		add_filter( 'the_content', [ $this, 'render_question' ] );
+		add_filter( 'the_content', [ $this, 'attach_question' ] );
+		add_shortcode('quick-survey', [$this, 'survey_shortcode']);
 	}
 
 
-	function render_question( $content ) {
+    public function survey_renderalbe($question){
 
-		global $post;
+	    $status = $question['status'] ?? 'closed';
+	    if( $status == 'closed') return false;
+
+        $q = $question['question'] ?? '';
+
+        if( empty($q)) return false;
+
+        return true;
+    }
+
+    function attach_question($content){
+
+        global $post;
+
+	    $question = maybe_unserialize( get_post_meta( $post->ID, 'quick-survey-question', true ) );
+
+
+        if($this->survey_renderalbe($question) && !has_shortcode($content, 'quick-survey')){
+            $content .= $this->render_question($post);
+        }
+
+        return $content;
+
+    }
+
+    function survey_shortcode(){
+        global $post;
+        return $this->render_question($post);
+    }
+
+
+	function render_question( $post ) {
 
 		$question = maybe_unserialize( get_post_meta( $post->ID, 'quick-survey-question', true ) );
-
-        $status = $question['status'] ?? 'closed';
-
-        if( $status == 'closed') return $content;
-
-		if ( empty( $question ) || has_shortcode( $content, 'quick-survey' ) ) {
-			return $content;
-		}
 
 		$answers = Answers::answers_for_chart($post->ID);
 
@@ -41,9 +65,7 @@ class FrontendQuestion {
         </div>
 		<?php
 
-		$content .= ob_get_clean();
-
-		return $content;
+		return ob_get_clean();
 
 	}
 

@@ -34,39 +34,35 @@ class MetaBox {
 		ob_start();
 		?>
         <div id="quick-survey-admin" class="p-10">
-        <label class="mb-3 font-semibold"><?php _e( 'survey status', 'quick-survey' ) ?></label>
+        <label class="mb-5 font-semibold"><?php _e( 'Umfrage Status', 'quick-survey' ) ?></label>
         <div class="flex space-x-5 mb-4">
             <label>
-                <input type="radio" name="qsy[status]" value="open" <?php checked( $value['status'] ?? 'closed', 'open', true ) ?>> <?php _e( 'open', 'quick-survey' ) ?>
+                <input type="radio" name="qsy[status]" value="open" <?php checked( $value['status'] ?? 'closed', 'open', true ) ?>> <?php _e( 'Offen', 'quick-survey' ) ?>
             </label>
             <label>
-                <input type="radio" name="qsy[status]" value="closed" <?php checked( $value['status'] ?? 'closed', 'closed', true ) ?>> <?php _e( 'closed', 'quick-survey' ) ?>
+                <input type="radio" name="qsy[status]" value="closed" <?php checked( $value['status'] ?? 'closed', 'closed', true ) ?>> <?php _e( 'Geschlossen', 'quick-survey' ) ?>
             </label>
         </div>
         <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'This posts question', 'quick-survey' ) ?></label>
+            <label class="mb-3 font-semibold"><?php _e( 'Frage zu diesem Beitrag', 'quick-survey' ) ?></label>
             <input type="text" class="block w-full border border-black" name="qsy[question]" value="<?php echo $value['question'] ?? '' ?>">
         </div>
         <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'This posts question', 'quick-survey' ) ?></label>
-            <input type="text" class="block w-full border border-black" name="qsy[question]" value="<?php echo $value['question'] ?? '' ?>">
-        </div>
-        <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'Description', 'quick-survey' ) ?></label>
+            <label class="mb-3 font-semibold"><?php _e( 'Beschreibung der Frage', 'quick-survey' ) ?></label>
             <textarea class="block w-full border border-black" name="qsy[description]"><?php echo trim( $value['description'] ?? '' ) ?></textarea>
         </div>
         <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'Green Button Text', 'quick-survey' ) ?></label>
+            <label class="mb-3 font-semibold"><?php _e( 'Text auf dem grünen Button', 'quick-survey' ) ?></label>
             <input type="text" class="block w-full border border-black" name="qsy[green]" value="<?php echo $value['green'] ?? 'Ja' ?>">
         </div>
         <div class="mb-4">
-            <label class="mb-3 font-semibold"><?php _e( 'Red Button Text', 'quick-survey' ) ?></label>
+            <label class="mb-3 font-semibold"><?php _e( 'Text auf dem rotem Button', 'quick-survey' ) ?></label>
             <input type="text" class="block w-full border border-black" name="qsy[red]" value="<?php echo $value['red'] ?? 'Nein' ?>">
         </div>
         <div class="mb-4">
             <label class="mb-3 font-semibold">
                 <input type="checkbox" class="block w-full border border-black" name="qsy[feedback]" <?php checked( $value['feedback'] ?? '0', '1', true ) ?> value="1">
-				<?php _e( 'Allows Feedback', 'quick-survey' ) ?></label>
+				<?php _e( 'Feedback aktivieren', 'quick-survey' ) ?></label>
         </div>
 
 
