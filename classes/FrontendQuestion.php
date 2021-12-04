@@ -59,7 +59,13 @@ class FrontendQuestion {
 		?>
         <div id="quick-survey" class="bg-white p-10 my-10">
 
-			<?php if ( $question['type'] == 'truefalse' ): ?>
+
+
+			<?php
+
+            $type = $question['type'] ?? 'truefalse';
+
+            if ( $type == 'truefalse' ): ?>
                 <simple-question
                         :post_id="<?php echo $post->ID ?>"
                         question="<?php echo $question['question'] ?>"
