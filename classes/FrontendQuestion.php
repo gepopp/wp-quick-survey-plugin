@@ -43,8 +43,8 @@ class FrontendQuestion {
 	}
 
 	function survey_shortcode() {
-		global $post;
 
+		global $post;
 		return $this->render_question( $post );
 	}
 
