@@ -63,7 +63,7 @@ class FrontendQuestion {
 
 			<?php
 
-            $type = $question['type'] ?? 'truefalse';
+            $type = isset($question['type']) ? $question['type'] : 'truefalse';
 
             if ( $type == 'truefalse' ): ?>
                 <simple-question
