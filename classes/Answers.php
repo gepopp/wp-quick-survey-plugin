@@ -20,7 +20,6 @@ class Answers {
 
 	public function get_asnwers_count(){
 		$post_id = sanitize_text_field($_POST['post_id']);
-
 		wp_die(json_encode(self::answers_for_chart($post_id)));
 	}
 
@@ -59,6 +58,7 @@ class Answers {
 		global $wpdb;
 
 		$user = wp_get_current_user();
+
 		if ( $user ) {
 			$email = $user->user_email;
 		} else {
@@ -105,8 +105,6 @@ class Answers {
 		} else {
 			wp_die( 'not saveable', 400 );
 		}
-
-
 	}
 
 

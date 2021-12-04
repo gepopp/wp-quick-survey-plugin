@@ -13,14 +13,11 @@ class FrontendQuestion {
 
 	public function survey_renderalbe( $question ) {
 
-		$status = $question['status'] ?? 'closed';
-		if ( $status == 'closed' ) {
+		if ( $question['status'] == 'closed' ) {
 			return false;
 		}
 
-		$q = $question['question'] ?? '';
-
-		if ( empty( $q ) ) {
+		if ( empty( $question['question'] ) ) {
 			return false;
 		}
 
@@ -31,8 +28,7 @@ class FrontendQuestion {
 
 		global $post;
 
-		$question = maybe_unserialize( get_post_meta( $post->ID, 'quick-survey-question', true ) );
-
+		$question = get_post_meta( $post->ID, 'quick-survey-question' );
 
 		if ( $this->survey_renderalbe( $question ) && ! has_shortcode( $content, 'quick-survey' ) ) {
 			$content .= $this->render_question( $post );
@@ -45,13 +41,20 @@ class FrontendQuestion {
 	function survey_shortcode() {
 
 		global $post;
+
+		$question = get_post_meta( $post->ID, 'quick-survey-question' );
+
+		if ( ! $this->survey_renderalbe( $question ) ) {
+			return '';
+		}
+
 		return $this->render_question( $post );
 	}
 
 
 	function render_question( $post ) {
 
-		$question = maybe_unserialize( get_post_meta( $post->ID, 'quick-survey-question', true ) );
+		$question = get_post_meta( $post->ID, 'quick-survey-question' );
 
 		$answers = Answers::answers_for_chart( $post->ID );
 
@@ -59,23 +62,20 @@ class FrontendQuestion {
 		?>
         <div id="quick-survey" class="bg-white p-10 my-10">
 
-
-
 			<?php
 
-            $type = isset($question['type']) ? $question['type'] : 'truefalse';
-
-            if ( $type == 'truefalse' ): ?>
+			if ( $question['type'] == 'truefalse' ): ?>
                 <simple-question
                         :post_id="<?php echo $post->ID ?>"
                         question="<?php echo $question['question'] ?>"
                         description="<?php echo $question['description'] ?>"
                         green="<?php echo $question['green'] ?>"
                         red="<?php echo $question['red'] ?>"
-                        :feedback="<?php echo $question['feedback'] ?>"
+                        feedback="<?php echo $question['feedback'] ?>"
                         :answers_given='<?php echo json_encode( $answers ) ?>'
                 ></simple-question>
-			<?php else: ?>
+
+            <?php else: ?>
 
                 <range-question
                         :post_id="<?php echo $post->ID ?>"
@@ -87,7 +87,7 @@ class FrontendQuestion {
                         mintext="<?php echo $question['mintext'] ?>"
                         medtext="<?php echo $question['medtext'] ?>"
                         maxtext="<?php echo $question['maxtext'] ?>"
-                        :feedback="<?php echo $question['feedback'] ?? 0 ?>"
+                        feedback="<?php echo $question['feedback'] ?? 0 ?>"
                         :answers_given='<?php echo json_encode( $answers ) ?>'
                 ></range-question>
 
