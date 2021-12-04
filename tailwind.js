@@ -4,6 +4,7 @@ module.exports = {
         enabled: true,
         content: [
             './**/*.php',
+            './source/**/*.vue',
             './dist/**/*.js'
         ]
     },

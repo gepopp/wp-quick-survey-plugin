@@ -36,17 +36,20 @@ class Answers {
 
 	public static function answers_for_chart($post_id){
 
-		$values = get_post_meta($post_id, 'quick-survey-question', true);
-		$values = maybe_unserialize($values);
+		$answers = self::get_asnwers($post_id);
 
-		$answers = [$values['green'] => 0, $values['red'] => 0];
+		$results = [];
+		foreach ( $answers as $answer ) {
 
-		foreach ( self::get_asnwers($post_id) as $asnwer ) {
-			$key = $asnwer->answer;
-			$answers[$key]++;
+			$key = (string) $answer->answer;
+
+			if(!array_key_exists($key, $results)){
+				$results[$key] = 0;
+			}
+			$results[$key]++;
+
 		}
-
-		return $answers;
+		return $results;
 
 	}
 
