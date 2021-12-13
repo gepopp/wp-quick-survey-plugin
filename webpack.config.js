@@ -11,7 +11,7 @@ let prefix = isProduction ? '.min' : '';
 const config = {
 	entry: {
 		main: './source/js/main.js',
-		admin: './source/js/admin.js',
+		survey_admin: './source/js/admin.js',
 	},
 	output: {
 		filename: `[name]${prefix}.js`,
@@ -34,6 +34,13 @@ const config = {
 						]
 					]
 				}
+			},
+			{
+				test: /\.css$/i,
+				use : [
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+				]
 			},
 			{
 				test: /\.s[ac]ss$/i,

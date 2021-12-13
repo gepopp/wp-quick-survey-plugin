@@ -13,7 +13,9 @@ class FrontendQuestion {
 
 	public function survey_renderalbe( $question ) {
 
-		if ( $question['status'] == 'closed' ) {
+        $status = $question['status'] ?? 'closed';
+
+		if ( $status == 'closed' ) {
 			return false;
 		}
 

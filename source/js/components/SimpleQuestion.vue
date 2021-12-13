@@ -9,7 +9,7 @@
           <button class="px-5 py-3 bg-red-500 text-white text-center w-full" v-text="red" @click="answer(red)"></button>
         </div>
       </div>
-      <div v-show="feedback == 'Y' && answered" class="flex flex-col justify-center items-center">
+      <div v-show="feedback == 'y' && answered" class="flex flex-col justify-center items-center">
         <h1 class="text-xl font-bold">Geben Sie uns Feedback</h1>
         <textarea class="border w-full p-3" rows="5" placeholder="Warum haben Sie diese Antwort gegeben..." v-model="feedback_text"></textarea>
         <input type="email" class="w-full border p-3 mt-3" placeholder="E-Mail" v-model="email">

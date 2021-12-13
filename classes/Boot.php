@@ -13,7 +13,8 @@ class Boot {
 		MetaBox::class,
 		FrontendQuestion::class,
 		Tables::class,
-		Answers::class
+		Answers::class,
+		CustomPostType::class
 	];
 
 
