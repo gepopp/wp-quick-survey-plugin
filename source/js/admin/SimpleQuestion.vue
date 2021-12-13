@@ -2,11 +2,11 @@
   <div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.green }}</label>
-      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + question.id + '][green]'" v-model="question.green">
+      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][green]'" v-model="merged.green">
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.red }}</label>
-      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + question.id + '][red]'" v-model="question.red">
+      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][red]'" v-model="merged.red">
     </div>
   </div>
 </template>
@@ -17,19 +17,27 @@ export default {
   props: {
     question: {
       type: Object,
-      default:{
-        red : 'Nein',
-        green : 'Ja'
+      default: {
+        red: 'Nein',
+        green: 'Ja'
       }
     },
-    order:{
-      type:Number
+  },
+  data() {
+    return {
+      translations: window.translations,
+      defaults: {
+        red: window.translations.redvalue,
+        green: window.translations.greenvalue
+      },
     }
   },
-  data(){
-    return{
-      translations: window.translations,
-
+  computed: {
+    merged() {
+      return {
+        ...this.defaults,
+        ...this.question
+      }
     }
   }
 }
