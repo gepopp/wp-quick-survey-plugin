@@ -1,6 +1,5 @@
 <template>
   <div class="w-full bg-gray-100">
-    {{ survey }}
     <div class="p-5">
       <label class="pb-3 font-semibold block">{{ translations.status }}</label>
       <div class="flex space-x-5 mb-4">
