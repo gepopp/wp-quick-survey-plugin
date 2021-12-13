@@ -7,28 +7,49 @@ class Enqueue {
 
 	public function __construct() {
 
-
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
-
 
 	}
 
 	public function enqueue_admin_scripts() {
 
 
-		wp_enqueue_script('quick_survey_admin', QSY_URL . 'dist/admin.js', [], QSY_VERSION, true);
+		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.js', [], QSY_VERSION, true );
+		wp_localize_script( 'quick_survey_admin', 'translations', [
+			'status'         => __( 'Umfrage Status', 'quick-survey' ),
+			'open'           => __( 'Offen', 'quick-survey' ),
+			'closed'         => __( 'Geschlossen', 'quick-survey' ),
+			'type'           => __( 'Fragentype', 'quick-survey' ),
+			'truefalse'      => __( 'JA/NEIN', 'quick-survey' ),
+			'skala'          => __( 'Skala', 'quick-survey' ),
+			'question'       => __( 'Frage zu diesem Beitrag', 'quick-survey' ),
+			'description'    => __( 'Beschreibung der Frage', 'quick-survey' ),
+			'showresults'    => __( 'Zeige Ergebnisse', 'quick-survey' ),
+			'green'          => __( 'Text auf dem grünem Button', 'quick-survey' ),
+			'red'            => __( 'Text auf dem rotem Button', 'quick-survey' ),
+			'minlabel'       => __( 'Mindeswert', 'quick-survey' ),
+			'maxlabel'       => __( 'Maximalwert', 'quick-survey' ),
+			'steplabel'      => __( 'Schrittweite', 'quick-survey' ),
+			'mintextlabel'   => __( 'Beschriftung Mindestwert', 'quick-survey' ),
+			'midtextlabel'   => __( 'Beschriftung Mittelwert', 'quick-survey' ),
+			'maxtextlabel'   => __( 'Beschriftung Maximalwert', 'quick-survey' ),
+			'feedbacklabel'  => __( 'Feedbackseite', 'quick-survey' ),
+			'feedbackclosed' => __( 'Feedbackseite nicht anzeigen', 'quick-survey' ),
+			'feedbackevery'  => __( 'Feedbackseite nach jeder Frage', 'quick-survey' ),
+			'feedbackend'    => __( 'Feedbackseite am Ende', 'quick-survey' ),
+		] );
+		wp_enqueue_script( 'quick_survey_admin' );
+
+
 		wp_enqueue_style(
 			'quick_survey_styles',
-			trailingslashit( QSY_URL ) . "dist/admin.css",
+			trailingslashit( QSY_URL ) . "dist/survey_admin.css",
 			[],
 			QSY_VERSION
 		);
 
 	}
-
-
-
 
 
 	public function enqueue_frontend_scripts() {
@@ -44,7 +65,6 @@ class Enqueue {
 		if ( defined( 'WP_DEBUG' ) && WP_DEBUG ) {
 			$ext = '';
 		}
-
 
 
 		wp_enqueue_script( 'quick_survey_script', QSY_URL . "dist/main{$ext}.js", [], QSY_VERSION, true );
