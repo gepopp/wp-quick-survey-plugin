@@ -9,21 +9,9 @@ class Enqueue {
 
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_frontend_scripts' ] );
 		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_admin_scripts' ] );
-		add_action( 'admin_head', [ $this, 'add_color_picker' ] );
 
 	}
 
-	public function add_color_picker() {
-
-		ob_start();
-		?>
-        <script>
-
-        </script>
-
-		<?php
-		echo ob_get_clean();
-	}
 
 	public function enqueue_admin_scripts() {
 
