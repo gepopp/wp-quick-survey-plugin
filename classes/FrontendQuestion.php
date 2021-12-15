@@ -17,7 +17,7 @@ class FrontendQuestion {
 
 		$attached = get_post_meta( $post->ID, 'quick-survey-attach', true );
 		$attached = maybe_unserialize( $attached );
-
+        if(!is_array($attached)) $attached = [];
 
 		if ( array_key_exists( 'survey', $attached )
 		     && get_post_type( $attached['survey'] ) == 'quick_survey'
