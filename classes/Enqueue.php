@@ -15,7 +15,7 @@ class Enqueue {
 	public function enqueue_admin_scripts() {
 
 
-		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.js', [], QSY_VERSION, true );
+		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.min.js', [], QSY_VERSION, true );
 		wp_localize_script( 'quick_survey_admin', 'translations', [
 			'status'              => __( 'Umfrage Status', 'quick-survey' ),
 			'open'                => __( 'Offen', 'quick-survey' ),
