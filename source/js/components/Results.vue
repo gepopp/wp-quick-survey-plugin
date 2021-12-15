@@ -46,7 +46,8 @@ export default {
         action: 'qsy_load_answers',
         question_id: Object.keys(this.questions)
       }))
-          .then((rsp) => this.answers = rsp.data);
+          .then((rsp) => this.answers = rsp.data)
+      .catch((rsp) => console.log(rsp.response));
     },
     getLabels(id) {
 

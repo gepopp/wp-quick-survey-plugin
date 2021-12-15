@@ -31,6 +31,10 @@ class Answers {
 
 		$results = $wpdb->get_results($sql);
 
+		if(is_wp_error($results)){
+			wp_die(var_dump($results), 400);
+		}
+
 		wp_die(json_encode($results));
 
 	}
