@@ -11,7 +11,7 @@
         </div>
       </transition>
       <transition name="fade">
-        <div v-show="showQuestion(index)">
+        <div v-show="showQuestion(index)" class="px-5">
           <range-question
               :question="question"
               v-if="question.type == 'range'"
