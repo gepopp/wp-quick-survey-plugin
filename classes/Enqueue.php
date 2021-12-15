@@ -18,9 +18,7 @@ class Enqueue {
 		ob_start();
 		?>
         <script>
-            jQuery(document).ready(function ($) {
-                $('.color-picker').wpColorPicker();
-            })
+
         </script>
 
 		<?php

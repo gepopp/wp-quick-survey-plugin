@@ -6,11 +6,9 @@ import Axios from 'axios'
 
 import Survey from './admin/Survey.vue'
 
-(function ($) {
 
-    $(function () {
-        $('.color-picker').wpColorPicker();
-    })
+jQuery(document).ready(function ($) {
+    $('.color-picker').wpColorPicker();
 })
 
 const app = new Vue({
