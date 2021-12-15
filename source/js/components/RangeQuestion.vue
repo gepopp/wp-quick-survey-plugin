@@ -61,6 +61,8 @@ export default {
 
     this.is_answered = this.AnswerFunctions.updateStatus();
     this.$parent.$on('answer_saved', () => this.is_answered = this.AnswerFunctions.updateStatus());
+    window.dispatchEvent(new Event('resize'));
+
 
   },
   computed: {
@@ -83,6 +85,9 @@ export default {
       });
       return labels;
     }
+  },
+  renderTracked() {
+    window.dispatchEvent(new Event('resize'));
   }
 }
 </script>
