@@ -43,7 +43,7 @@
     </div>
 
     <div v-if="answered.length == question_ids.length || current + 1 > question_ids.length">
-      <results :questions="questions"></results>
+      <results :questions="questions" :survey="survey"></results>
     </div>
 
 

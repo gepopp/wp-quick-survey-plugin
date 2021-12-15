@@ -22,11 +22,11 @@ class Answers {
 	}
 
 	public function load_answers(){
-		$question_ids = implode(',', $_POST['question_id']);
+
 
 		global $wpdb;
 
-		$sql = sprintf('SELECT question_id, answer, COUNT(answer) as count FROM %s WHERE survey_id = 41216 AND answer <> "" GROUP BY answer', $wpdb->prefix . 'qsy_answers' );
+		$sql = sprintf('SELECT question_id, answer, COUNT(answer) as count FROM %s WHERE survey_id = %d AND answer <> "" GROUP BY answer', $wpdb->prefix . 'qsy_answers', $_POST['survey'] );
 
 
 		$results = $wpdb->get_results($sql);

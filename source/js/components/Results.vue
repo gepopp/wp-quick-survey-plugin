@@ -31,7 +31,7 @@ import LineChart from "./LineChart.vue";
 export default {
   name: "Results",
   components: {LineChart, BarChart},
-  props: ['questions'],
+  props: ['questions', 'survey'],
   data() {
     return {
       answers: []
@@ -44,7 +44,7 @@ export default {
     loadAnswers() {
       Axios.post(qsy_xhr.ajaxurl, Qs.stringify({
         action: 'qsy_load_answers',
-        question_id: Object.keys(this.questions)
+        survey: this.survey
       }))
           .then((rsp) => this.answers = rsp.data)
       .catch((rsp) => console.log(rsp.response));
