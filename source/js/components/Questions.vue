@@ -161,7 +161,8 @@ export default {
       }
 
       if (index == this.question_ids[this.current]) {
-        setTimeout(() => window.dispatchEvent(new Event('resize')), 550 );
+        // bug in range slider trigger resize event to fix
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 100 );
         return true;
       }
 
