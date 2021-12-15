@@ -161,6 +161,7 @@ export default {
       }
 
       if (index == this.question_ids[this.current]) {
+        setTimeout(() => window.dispatchEvent(new Event('resize')), 550 );
         return true;
       }
 
