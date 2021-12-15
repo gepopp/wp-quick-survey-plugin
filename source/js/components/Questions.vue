@@ -10,13 +10,16 @@
           ></simple-question>
         </div>
       </transition>
-      <div v-show="showQuestion(index)" class="px-5">
-        <range-question
-            :question="question"
-            v-if="question.type == 'range'"
-            @answer="saveAnswer"
-        ></range-question>
-      </div>
+      <transition name="fade">
+        <div v-show="showQuestion(index)" class="px-5">
+          <range-question
+              :question="question"
+              v-if="question.type == 'range'"
+              @answer="saveAnswer"
+              v-show="showQuestion(index)"
+          ></range-question>
+        </div>
+      </transition>
       <transition name="fade">
         <div v-show="showQuestion(index)">
           <multiple-choice-question
