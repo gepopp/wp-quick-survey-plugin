@@ -11,12 +11,15 @@
             :lineHeight="sliderCustomzie.lineHeight"
             :tooltipStyles="sliderCustomzie.tooltipStyles"
             v-model="rangevalue"
-            @dragEnd="save"
         ></vue-slide-bar>
         <div class="flex justify-between -mt-5 text-xs">
           <div v-text="question.mintext"></div>
           <div v-text="question.midtext"></div>
           <div v-text="question.maxtext"></div>
+        </div>
+
+        <div class="w-full mt-4 py-3 bg-primary-100 text-white text-center cursor-pointer" @click="AnswerFunctions.saveAnswer(rangevalue)">
+          antworten
         </div>
       </div>
       <div v-else>
@@ -38,8 +41,8 @@ export default {
   data() {
     return {
       answer: false,
-      is_answered : false,
-      AnswerFunctions : new AnswerFunctions(this),
+      is_answered: false,
+      AnswerFunctions: new AnswerFunctions(this),
       rangevalue: this.min,
       saveTimeout: null,
       sliderCustomzie: {
@@ -79,16 +82,6 @@ export default {
         labels.push({label: val})
       });
       return labels;
-    }
-  },
-  methods:{
-    save(){
-
-        clearTimeout(this.saveTimeout);
-
-        this.saveTimeout = setTimeout(()=>{
-          this.AnswerFunctions.saveAnswer(this.rangevalue);
-        }, 1000);
     }
   }
 }

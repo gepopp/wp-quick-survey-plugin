@@ -7,7 +7,16 @@
         <div class="w-full">
           <bar-chart v-if="question.type == 'truefalse' && answers.length != 0" :chart-data="chartData(question.id)"></bar-chart>
           <bar-chart v-if="question.type == 'multiplechoice' && answers.length != 0" :chart-data="chartData(question.id)"></bar-chart>
-          <line-chart v-if="question.type == 'range' && answers.length != 0" :chart-data="chartData(question.id)"></line-chart>
+
+
+          <div v-if="question.type == 'range' && answers.length != 0">
+            <line-chart :chart-data="chartData(question.id)"></line-chart>
+            <div class="flex justify-between -mt-5 mb-5 text-xs">
+                <span v-text="question.mintext"></span>
+                <span v-text="question.midtext"></span>
+                <span v-text="question.maxtext"></span>
+            </div>
+          </div>
 
           <div v-if="question.type == 'text'">
             <ul>
@@ -47,7 +56,7 @@ export default {
         survey: this.survey
       }))
           .then((rsp) => this.answers = rsp.data)
-      .catch((rsp) => console.log(rsp.response));
+          .catch((rsp) => console.log(rsp.response));
     },
     getLabels(id) {
 
@@ -55,12 +64,12 @@ export default {
 
       var predefined = [];
 
-      if(question.type == 'truefalse'){
+      if (question.type == 'truefalse') {
         predefined.push(question.green);
         predefined.push(question.red);
       }
 
-      if(question.type == 'multiplechoice'){
+      if (question.type == 'multiplechoice') {
         predefined = Object.values(question.answer).filter((e) => e != "");
       }
 
@@ -70,14 +79,14 @@ export default {
 
       var merged = [...predefined, ...answerlabels];
 
-      return [ ... new Set(merged)];
+      return [...new Set(merged)];
     },
     getData(id) {
       return this.answers.filter((answer) => {
         if (answer.question_id == id) return answer;
       }).map((e) => e.count)
     },
-    getRangeLabels(id){
+    getRangeLabels(id) {
 
       var min = parseInt(this.questions[id].min);
       var max = parseInt(this.questions[id].max);
@@ -89,27 +98,27 @@ export default {
       }
       return range;
     },
-    getRangeData(id){
+    getRangeData(id) {
 
 
-       var range = this.getRangeLabels(id);
-       var values = [];
-       var answers = this.answers.filter((answer) => answer.question_id == id);
+      var range = this.getRangeLabels(id);
+      var values = [];
+      var answers = this.answers.filter((answer) => answer.question_id == id);
 
-       range.forEach((index) => {
+      range.forEach((index) => {
 
-         values[index-1] = 0;
+        values[index - 1] = 0;
 
-         answers.forEach((answer) => {
-           if(answer.answer == index){
-             values[index-1] = ( parseInt(answer.count));
-           }
-         })
-       })
+        answers.forEach((answer) => {
+          if (answer.answer == index) {
+            values[index - 1] = (parseInt(answer.count));
+          }
+        })
+      })
       return values;
     },
 
-    getColors(id){
+    getColors(id) {
       return this.questions[id].colors;
     },
     chartData(id) {
