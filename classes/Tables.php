@@ -31,7 +31,7 @@ class Tables {
 
 		$sql        = "CREATE TABLE $table_name (
 		id BIGINT NOT NULL AUTO_INCREMENT,
-		post_id BIGINT NOT NULL,
+		survey_id BIGINT NOT NULL,
 		question_id BIGINT NOT NULL,
 		user_id BIGINT NULL,
 		user_ip VARCHAR(255) NULL,
@@ -43,6 +43,8 @@ class Tables {
 	) $charset_collate;";
 		dbDelta( $sql );
 
+		require_once( ABSPATH . 'wp-admin/install-helper.php' );
+		maybe_drop_column($table_name, 'post_id', sprintf('ALTER TABLE %s DROP COLUMN %s', $table_name, 'post_id'));
 
 		update_option( 'quick-survey-version', QSY_VERSION );
 

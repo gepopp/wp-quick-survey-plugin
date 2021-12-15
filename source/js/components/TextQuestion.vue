@@ -3,19 +3,11 @@
     <div class="flex flex-col justify-center items-center my-10 pb-10 border-b border-gray-900">
       <h1 class="text-xl font-bold" v-text="question.question"></h1>
       <p v-text="question.description"></p>
-      <div class="mt-5 flex justify-center space-x-3 w-full" v-if="!is_answered">
-        <button class="px-5 py-3 text-white text-center w-full"
-                :style="{ backgroundColor:  question.colors[0] }"
-                v-text="question.green"
-                @click="AnswerFunctions.saveAnswer(question.green)"
-                v-show="!answer || answer == question.green"
-        ></button>
-        <button class="px-5 py-3 text-white text-center w-full"
-                :style="{ backgroundColor:  question.colors[1] }"
-                v-text="question.red"
-                @click="AnswerFunctions.saveAnswer(question.red)"
-                v-show="!answer || answer == question.red"
-        ></button>
+      <div class="mt-5 flex flex-col w-full" v-if="!is_answered">
+        <textarea class="w-full border border-gray-900 p-3" rows="8" v-model="answer"></textarea>
+        <div class="w-full mt-4 py-3 bg-primary-100 text-white text-center cursor-pointer" @click="AnswerFunctions.saveAnswer(answer)">
+          antworten
+        </div>
       </div>
       <div v-else>
         <p class="text-green-800">Vielen Dank, ihre Antwort wurde gespeichert.</p>
@@ -29,11 +21,11 @@ import AnswerFunctions from "../AnswerFunctions.js"
 
 
 export default {
-  name: "SimpleQuestion",
+  name: "TextQuestion",
   props: ['question'],
   data() {
     return {
-      answer: false,
+      answer: '',
       is_answered : false,
       AnswerFunctions : new AnswerFunctions(this)
     }

@@ -24,6 +24,10 @@
       <label class="mb-3 font-semibold">{{ translations.maxtextlabel }}</label>
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][maxtext]'" v-model="merged.maxlabel">
     </div>
+    <div class="mb-4">
+      <label class="mb-3 font-semibold block">{{ translations.barcolorlabel }}</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[0]">
+    </div>
   </div>
 </template>
 
@@ -40,7 +44,8 @@ export default {
         step: 1,
         minlabel: 'Nichts',
         midlabel: 'Die Hälfte',
-        maxlabel: 'Alles'
+        maxlabel: 'Alles',
+        colors: ['#5c97d0']
       }
     }
   },

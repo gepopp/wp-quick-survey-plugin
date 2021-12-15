@@ -6,26 +6,12 @@ import Axios from 'axios'
 
 import Survey from './admin/Survey.vue'
 
-//
-// const Api = Axios.create({
-//     baseURL: qsy_xhr.rootapiurl,
-//     headers: {
-//         'content-type': 'application/json',
-//         'X-WP-Nonce': qsy_xhr.nonce
-//     }
-// });
-// Vue.prototype.$rest = Api;
-//
-// const Ajax = Axios.create({
-//     baseURL: qsy_xhr.ajaxurl,
-//     headers: {
-//         'content-type': 'application/json',
-//         'X-WP-Nonce': qsy_xhr.nonce
-//     }
-// });
-// Vue.prototype.$xhr = Ajax;
+(function ($) {
 
-
+    $(function () {
+        $('.color-picker').wpColorPicker();
+    })
+})
 
 const app = new Vue({
     el: '#quick-survey-admin',

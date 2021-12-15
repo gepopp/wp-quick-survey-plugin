@@ -3,7 +3,7 @@
  * Plugin Name:       Quick Survey
  * Plugin URI:        https://poppgerhard.at/quick-survey
  * Description:       Add a simple questionaire to posts.
- * Version:           0.0.3
+ * Version:           0.0.13
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Gerhard Popp

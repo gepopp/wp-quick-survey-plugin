@@ -9,14 +9,15 @@ module.exports = {
         ]
     },
     theme: {
-        extend : {
-            colors:{
-                'plugin' : '#3088BF'
+        extend: {
+            colors: {
+                'plugin': '#3088BF'
             }
         }
     },
     variants: {},
     plugins: [
         require('tailwind-scrollbar'),
+        require('@tailwindcss/custom-forms'),
     ],
 }

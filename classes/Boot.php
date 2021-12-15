@@ -11,10 +11,12 @@ class Boot {
 	private $boot_classes = [
 		Enqueue::class,
 		MetaBox::class,
+		SponsorMetaBox::class,
+		AttachMetaBox::class,
 		FrontendQuestion::class,
 		Tables::class,
 		Answers::class,
-		CustomPostType::class
+		CustomPostType::class,
 	];
 
 
@@ -34,18 +36,18 @@ class Boot {
 
 		foreach ( $this->boot_classes as $boot_class ) {
 
-			if(class_exists($boot_class)){
+			if ( class_exists( $boot_class ) ) {
 				new $boot_class();
 			}
 		}
 
 	}
 
-	public function bootHooks(){
+	public function bootHooks() {
 
-		add_action( 'init', function (){
+		add_action( 'init', function () {
 			load_plugin_textdomain( 'quick-survey', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-		});
+		} );
 	}
 
 	private function __construct() {

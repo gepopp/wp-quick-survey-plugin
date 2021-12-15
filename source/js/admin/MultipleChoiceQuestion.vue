@@ -14,20 +14,40 @@
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][answer][1]'" v-model="merged.answer[1]">
     </div>
     <div class="mb-4">
+      <label class="mb-3 font-semibold block">Auswhal 1 Farbe</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[0]">
+    </div>
+    <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.answerlabel }} 2</label>
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][answer][2]'" v-model="merged.answer[2]">
+    </div>
+    <div class="mb-4">
+      <label class="mb-3 font-semibold block">Auswhal 2 Farbe</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[1]">
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.answerlabel }} 3</label>
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][answer][3]'" v-model="merged.answer[3]">
     </div>
     <div class="mb-4">
+      <label class="mb-3 font-semibold block">Auswhal 3 Farbe</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[2]">
+    </div>
+    <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.answerlabel }} 4</label>
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][answer][4]'" v-model="merged.answer[4]">
     </div>
     <div class="mb-4">
+      <label class="mb-3 font-semibold block">Auswhal 4 Farbe</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[3]">
+    </div>
+    <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.answerlabel }} 5</label>
       <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][answer][5]'" v-model="merged.answer[5]">
+    </div>
+    <div class="mb-4">
+      <label class="mb-3 font-semibold block">Auswhal 4 Farbe</label>
+      <input type="text" class="color-picker" :name="'qsy[questions][' + merged.id + '][colors][]'" v-model="merged.colors[4]">
     </div>
   </div>
 </template>
@@ -41,7 +61,8 @@ export default {
       default(){
         return {
           answermode : 'single',
-          answer: ['', '', '', '', '']
+          answer: ['', '', '', '', ''],
+
         }
       }
     }
@@ -51,7 +72,8 @@ export default {
       translations: window.translations,
       defaults : {
         answermode : 'single',
-        answer: ['', '', '', '', '']
+        answer: ['', '', '', '', ''],
+        colors: ['#5c97d0', '#5c97d0', '#5c97d0', '#5c97d0', '#5c97d0']
       }
     }
   },

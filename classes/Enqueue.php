@@ -28,14 +28,17 @@ class Enqueue {
 			'question'            => __( 'Frage zu diesem Beitrag', 'quick-survey' ),
 			'description'         => __( 'Beschreibung der Frage', 'quick-survey' ),
 			'showresults'         => __( 'Zeige Ergebnisse', 'quick-survey' ),
-			'green'               => __( 'Text auf dem grünem Button', 'quick-survey' ),
-			'red'                 => __( 'Text auf dem rotem Button', 'quick-survey' ),
+			'green'               => __( 'Text auf dem linkem Button', 'quick-survey' ),
+			'red'                 => __( 'Text auf dem rechtem Button', 'quick-survey' ),
+			'greencolorlabel'     => __( 'Farbe des linken Buttons', 'quick-survey' ),
+			'redcolorlabel'       => __( 'Farbe des rechten Buttons', 'quick-survey' ),
 			'minlabel'            => __( 'Mindeswert', 'quick-survey' ),
 			'maxlabel'            => __( 'Maximalwert', 'quick-survey' ),
 			'steplabel'           => __( 'Schrittweite', 'quick-survey' ),
 			'mintextlabel'        => __( 'Beschriftung Mindestwert', 'quick-survey' ),
 			'midtextlabel'        => __( 'Beschriftung Mittelwert', 'quick-survey' ),
 			'maxtextlabel'        => __( 'Beschriftung Maximalwert', 'quick-survey' ),
+			'barcolorlabel'       => __( 'Farbe des Schiebereglers und der Ergebnischart', 'quick-survey' ),
 			'feedbacklabel'       => __( 'Feedbackseite', 'quick-survey' ),
 			'feedbackclosed'      => __( 'Feedbackseite nicht anzeigen', 'quick-survey' ),
 			'feedbackevery'       => __( 'Feedbackseite nach jeder Frage', 'quick-survey' ),
@@ -57,6 +60,7 @@ class Enqueue {
 			QSY_VERSION
 		);
 
+
 	}
 
 
@@ -74,6 +78,7 @@ class Enqueue {
 			$ext = '';
 		}
 
+		wp_enqueue_script( 'campaign_monitor', 'https://js.createsend1.com/javascript/copypastesubscribeformlogic.js' );
 
 		wp_enqueue_script( 'quick_survey_script', QSY_URL . "dist/main{$ext}.js", [], QSY_VERSION, true );
 //		wp_localize_script( 'quick_survey_script', 'qsy_translations' );

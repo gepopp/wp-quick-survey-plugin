@@ -12,14 +12,12 @@
       </div>
     </div>
     <div class="p-5">
-      <label class="pb-3 font-semibold block">{{ translations.feedbacklabel }}</label>
+      <label class="pb-3 font-semibold block">Nach Newsletter Anmeldung fragen?</label>
       <div class="flex space-x-5 mb-4">
         <label>
-          <input type="radio" name="qsy[feedback]" value="none" v-model="merged.feedback"/> {{ translations.feedbackclosed }}</label>
+          <input type="radio" name="qsy[newsletter]" value="none" v-model="merged.newsletter"/> Nicht fragen</label>
         <label>
-          <input type="radio" name="qsy[feedback]" value="every" v-model="merged.feedback"/> {{ translations.feedbackevery }}</label>
-        <label>
-          <input type="radio" name="qsy[feedback]" value="end" v-model="merged.feedback"/> {{ translations.feedbackend }}</label>
+          <input type="radio" name="qsy[newsletter]" value="allways" v-model="merged.newsletter"/> Immer unter Fragen und Ergebnissen anzeigen</label>
       </div>
     </div>
     <div class="border border-gray-500 flex justify-between p-5">
@@ -33,7 +31,7 @@
     <div class="border border-gray-500 flex flex-col p-5 wrapper" id="dragable">
       <div class="border border-gray-500 p-5 bg-white wrapper" v-for="(question, index) in questions" :key="question.id">
         <div class="flex justify-between">
-          <div class="font-bold text-xl">{{ question.question != '' ? question.question : 'Frage' }}</div>
+          <div class="font-bold text-xl" v-text="question.question != '' ? question.question : 'Noch keine Frage eingegeben'"></div>
           <div class="flex space-x-5">
             <div @click="$emit('collapse', { id: question.id })" class="flex flex-col">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +92,7 @@ export default {
       questions: {},
       defaults: {
         status: 'open',
-        feedback: 'end',
+        newsletter: 'allways',
         questions: [
           {
             type: 'truefalse',

@@ -1,8 +1,7 @@
 import '../scss/styles.scss';
 
 import Vue from "vue";
-import SimpleQuestion from "./components/SimpleQuestion.vue";
-import RangeQuestion from "./components/RangeQuestion.vue";
+import Questions from "./components/Questions.vue";
 
 import Axios from 'axios'
 
@@ -32,7 +31,6 @@ Vue.prototype.$xhr = Ajax;
 const app = new Vue({
     el: '#quick-survey',
     components : {
-        SimpleQuestion,
-        RangeQuestion
+        Questions
     }
 });

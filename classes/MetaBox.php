@@ -14,6 +14,9 @@ class MetaBox {
 
 
 	public function add_survey_meta_box( $post_type ) {
+
+        if($post_type != 'quick_survey') return;
+
 		add_meta_box(
 			'quick_sruvey_meta_box',
 			__( 'Add a survey', 'quick-survey' ),

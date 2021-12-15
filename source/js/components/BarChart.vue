@@ -6,7 +6,7 @@ const {reactiveProp} = mixins;
 export default {
   extends: HorizontalBar,
   mixins: [reactiveProp],
-  props: ['green', 'red'],
+  props: ['labels', 'values'],
   data() {
     return {
       options: {
@@ -44,7 +44,7 @@ export default {
   methods: {
     updateChardata(values) {
       this.chartData = {
-        labels: [this.green, this.red],
+        labels: this.labels,
         datasets: [{
           label: '',
           data: values,

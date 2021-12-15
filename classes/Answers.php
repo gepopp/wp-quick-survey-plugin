@@ -16,7 +16,26 @@ class Answers {
 		add_action( 'wp_ajax_qsy_get_answers_count', [ $this, 'get_asnwers_count' ] );
 		add_action( 'wp_ajax_nopriv_qsy_get_answers_count', [ $this, 'get_asnwers_count' ] );
 
+		add_action( 'wp_ajax_qsy_load_answers', [ $this, 'load_answers' ] );
+		add_action( 'wp_ajax_nopriv_qsy_load_answers', [ $this, 'load_answers' ] );
+
 	}
+
+	public function load_answers(){
+		$question_ids = implode(',', $_POST['question_id']);
+
+		global $wpdb;
+
+		$sql = sprintf('SELECT question_id, answer, COUNT(answer) as count FROM %s WHERE survey_id = 41216 AND answer <> "" GROUP BY answer', $wpdb->prefix . 'qsy_answers' );
+
+
+		$results = $wpdb->get_results($sql);
+
+		wp_die(json_encode($results));
+
+	}
+
+
 
 	public function get_asnwers_count(){
 		$post_id = sanitize_text_field($_POST['post_id']);
@@ -81,18 +100,15 @@ class Answers {
 
 	public function save_answer() {
 
-		$post_id = sanitize_text_field( $_POST['post_id'] );
+		$survey_id = sanitize_text_field( $_POST['survey_id'] );
+		$question_id = sanitize_text_field( $_POST['question_id'] );
 
 		$user = wp_get_current_user();
-
-		$ip = $this->get_ip();
-
-		$question_id = $this->get_question_id( $post_id );
 
 		global $wpdb;
 
 		$insert = $wpdb->insert( $wpdb->prefix . 'qsy_answers', [
-			'post_id'     => $post_id,
+			'survey_id'     => $survey_id,
 			'question_id' => $question_id,
 			'user_id'     => ! $user ? null : $user->ID,
 			'user_ip'     => $this->get_ip(),
