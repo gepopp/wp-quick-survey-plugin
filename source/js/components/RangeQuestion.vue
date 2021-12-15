@@ -3,7 +3,7 @@
     <div class="flex flex-col justify-center items-center my-10 pb-10 border-b border-gray-900">
       <h1 class="text-xl font-bold" v-text="question.question"></h1>
       <p v-text="question.description"></p>
-      <div v-if="!is_answered">
+      <div class="w-full" v-if="!is_answered">
         <vue-slide-bar
             :data="createSteps"
             :range="labels"

@@ -174,11 +174,13 @@ export default {
 <style scoped lang="scss">
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
+  width: 100%;
 }
 
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */
 {
   opacity: 0;
+  width: 0;
   position: absolute;
 }
 
