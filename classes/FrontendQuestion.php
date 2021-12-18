@@ -136,12 +136,12 @@ class FrontendQuestion {
 			$answers = json_encode( $answers );
 		}
 
-//		$newsletter = $survey_meta['newsletter'];
-//		if ( $shortcode_newsletter != null ) {
-//			$newsletter = $shortcode_newsletter;
-//		}
-//
-//
+		$newsletter = $survey_meta['newsletter'];
+		if ( $shortcode_newsletter != null ) {
+			$newsletter = $shortcode_newsletter;
+		}
+
+
 //		ob_start();
 //		?>
 <!--        <div class="p-5 --><?php //echo ( ! is_home() && ! is_front_page() ) ? 'bg-white' : 'h-full flex flex-col' ?><!--">-->
