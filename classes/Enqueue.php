@@ -15,6 +15,8 @@ class Enqueue {
 
 	public function enqueue_admin_scripts() {
 
+		$screen = get_current_screen();
+		if($screen->id != 'quick_survey') return;
 
 		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.js', ['jquery'], QSY_VERSION, true );
 		wp_localize_script( 'quick_survey_admin', 'translations', [
