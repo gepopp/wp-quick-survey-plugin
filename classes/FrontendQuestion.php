@@ -120,7 +120,6 @@ class FrontendQuestion {
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
 
-		wp_die(var_dump($answers));
 
 		if ( $question ) {
 			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
@@ -140,6 +139,8 @@ class FrontendQuestion {
 
 			$answers = json_encode( $answers );
 		}
+
+		wp_die(var_dump($answers));
 
 
 		$newsletter = $survey_meta['newsletter'];
