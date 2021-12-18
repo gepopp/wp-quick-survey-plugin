@@ -162,7 +162,7 @@ class FrontendQuestion {
                 <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
 
 
-        			<?php if ( $is_frontpage ): ?>
+        			<?php if (! $is_frontpage ): ?>
                         <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
                     <?php         var_dump(memory_get_peak_usage()); ?>
                         <div class="flex justify-center">
