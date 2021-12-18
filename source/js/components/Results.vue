@@ -47,8 +47,8 @@
       </div>
     </div>
     <div class="w-full flex space-x-5 justify-center mb-5" v-if="layout == 'paginate' && question_ids.length > 1">
-      <div class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100" @click="current--" v-show="current > 0">vorherige Antwort</div>
-      <div class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100" @click="current++" v-show="current < question_ids.length - 1">nächste Antwort</div>
+      <button class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100 disabled:bg-gray-300 disabled:cursor-not-allowed" @click="current--" :disabled="current <= 0">vorherige Antwort</button>
+      <button class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100 disabled:bg-gray-300 disabled:cursor-not-allowed" @click="current++" :disabled="current >= question_ids.length - 1">nächste Antwort</button>
     </div>
   </div>
   <div v-else class="flex justify-center items-center w-full h-64">
@@ -129,28 +129,33 @@ export default {
       var step = parseInt(this.questions[id].step);
 
       var range = Array.from({length: max / step}, (v, k) => (k + 1) * step);
-      if (step > 1) {
-        range.unshift(min);
+
+      if(step > 1){
+        range.unshift(1);
       }
+
       return range;
     },
     getRangeData(id) {
 
 
       var range = this.getRangeLabels(id);
+
       var values = [];
       var answers = this.answers.filter((answer) => answer.question_id == id);
 
       range.forEach((index) => {
 
-        values[index - 1] = 0;
+        values.push(0);
 
         answers.forEach((answer) => {
           if (answer.answer == index) {
-            values[index - 1] = (parseInt(answer.count));
+            values.pop();
+            values.push(parseInt(answer.count));
           }
         })
       })
+
       return values;
     },
 

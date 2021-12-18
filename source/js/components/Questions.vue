@@ -54,8 +54,9 @@
       </transition-group>
 
       <div class="w-full flex space-x-5 justify-center mb-5" v-if="layout == 'paginate' && question_ids.length > 1 && !isFrontpage">
-        <div class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100" @click="current--">vorherige Frage</div>
-        <div class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100" @click="current++">nächste Frage</div>
+        <button class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100 disabled:bg-gray-300 disabled:cursor-not-allowed" @click="current--" :disabled="current <= 0">vorherige Frage</button>
+        <button class="px-10 py-3 text-white text-center cursor-pointer bg-primary-100 disabled:bg-gray-300 disabled:cursor-not-allowed" @click="current++" :disabled="current >= question_ids.length - 1">nächste Frage</button>
+
       </div>
     </div>
 
