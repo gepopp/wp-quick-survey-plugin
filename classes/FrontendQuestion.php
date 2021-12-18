@@ -147,9 +147,6 @@ class FrontendQuestion {
 
 		$is_frontpage = is_home() || is_front_page();
 
-		wp_die(var_dump($is_frontpage));
-
-
 		ob_start();
 
 		?>
