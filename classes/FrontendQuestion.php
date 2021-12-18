@@ -60,7 +60,7 @@ class FrontendQuestion {
 			return $content;
 		}
 
-		return $this->render( $content );
+		//return $this->render( $content );
 
 	}
 
