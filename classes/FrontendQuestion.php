@@ -144,7 +144,6 @@ class FrontendQuestion {
 
 		//40580096
 
-		wp_die(memory_get_usage());
 
 		$newsletter = $survey_meta['newsletter'];
 		if ( $shortcode_newsletter != null ) {
