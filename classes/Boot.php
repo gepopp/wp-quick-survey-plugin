@@ -14,7 +14,7 @@ class Boot {
 		SponsorMetaBox::class,
 		AnswersMetaBox::class,
 		AttachMetaBox::class,
-		FrontendQuestion::class,
+		//FrontendQuestion::class,
 		Tables::class,
 		Answers::class,
 		CustomPostType::class,
