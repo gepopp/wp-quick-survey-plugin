@@ -147,6 +147,9 @@ class FrontendQuestion {
 
 		$is_frontpage = is_home() || is_front_page();
 
+        $title = get_the_title( $attached['survey'] );
+
+
 		ob_start();
 
 		?>
