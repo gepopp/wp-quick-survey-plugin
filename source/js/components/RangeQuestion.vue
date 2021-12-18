@@ -15,9 +15,9 @@
         <div v-text="question.maxtext"></div>
       </div>
 
-      <div class="block w-full mt-4 py-3 bg-primary-100 text-white text-center cursor-pointer"
+      <div class="block w-full mt-4 py-3 text-white text-center cursor-pointer"
            @click="AnswerFunctions.saveAnswer(rangevalue)"
-           style="z-index: 99999"
+           :style="{ backgroundColor: this.question.colors[0], zIndex: '9999' }"
       >
         antworten
       </div>

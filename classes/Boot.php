@@ -18,6 +18,7 @@ class Boot {
 		Tables::class,
 		Answers::class,
 		CustomPostType::class,
+		SurveyIframe::class
 	];
 
 
