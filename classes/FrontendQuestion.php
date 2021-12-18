@@ -116,7 +116,7 @@ class FrontendQuestion {
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
-//
+        var_dump($answers);
 //		if ( $question ) {
 //			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
 //				if ( (int) $question != $id ) {
