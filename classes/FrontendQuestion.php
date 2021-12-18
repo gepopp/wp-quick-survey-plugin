@@ -175,12 +175,13 @@ class FrontendQuestion {
                                     </div>
         						<?php endif; ?>
 
-	                            <?php wp_die(memory_get_usage());  ?>
 
                                 <div>
                                     <p>
         								<?php echo get_the_excerpt( $attached['survey'] ) ?>
                                     </p>
+	                                <?php wp_die(memory_get_usage());  ?>
+
                                 </div>
                             </div>
                         </div>
