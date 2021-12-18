@@ -173,14 +173,15 @@ class FrontendQuestion {
                                     </div>
                     <?php         var_dump(memory_get_peak_usage()); ?>
         						<?php endif; ?>
-<!--                                <div>-->
-<!--                                    <p>-->
-<!--        								--><?php //echo get_the_excerpt( $attached['survey'] ) ?>
-<!--                                    </p>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                        </div>-->
+                                <div>
+                                    <p>
+        								<?php echo get_the_excerpt( $attached['survey'] ) ?>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
         			<?php endif; ?>
+	                <?php         var_dump(memory_get_peak_usage()); ?>
 
         <!--                <questions-->
         <!--                        :questions="--><?php //echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?><!--"-->
