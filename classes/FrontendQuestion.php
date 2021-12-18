@@ -177,28 +177,28 @@ class FrontendQuestion {
 <!---->
 <!---->
 <!---->
-<!--            <div class="flex flex-col items-center pt-5 mt-auto">-->
-<!--				--><?php //if ( $sponsor['active'] == 'yes' ): ?>
-<!--                    <a href="--><?php //echo $sponsor['url'] ?><!--" class="flex items-center text-black">-->
-<!--                        <span class="mr-5">--><?php //echo $sponsor['text'] ?><!--</span>-->
-<!--						--><?php //echo wp_get_attachment_image( $sponsor['logo'], 'thumbnail', null, [
-//							'class' => 'w-10 h-10',
-//							'style' => 'margin: 0 !important',
-//						] ) ?>
-<!--                    </a>-->
-<!--				--><?php //else: ?>
-<!--                    <div class="flex items-center text-black">-->
-<!--                        <span>made with</span>-->
-<!--                        <div class="px-2">-->
-<!--                            <svg class="w-6 h-6" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-<!--                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>-->
-<!--                            </svg>-->
-<!--                        </div>-->
-<!--                        <span>by <a href="https://poppgerhard.at">poppgerhard</a> </span>-->
-<!--                    </div>-->
-<!--				--><?php //endif; ?>
-<!--            </div>-->
-<!--        </div>-->
+            <div class="flex flex-col items-center pt-5 mt-auto">
+				<?php if ( $sponsor['active'] == 'yes' ): ?>
+                    <a href="<?php echo $sponsor['url'] ?>" class="flex items-center text-black">
+                        <span class="mr-5"><?php echo $sponsor['text'] ?></span>
+						<?php echo wp_get_attachment_image( $sponsor['logo'], 'thumbnail', null, [
+							'class' => 'w-10 h-10',
+							'style' => 'margin: 0 !important',
+						] ) ?>
+                    </a>
+				<?php else: ?>
+                    <div class="flex items-center text-black">
+                        <span>made with</span>
+                        <div class="px-2">
+                            <svg class="w-6 h-6" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <span>by <a href="https://poppgerhard.at">poppgerhard</a> </span>
+                    </div>
+				<?php endif; ?>
+            </div>
+        </div>
 		<?php
 		$content .= ob_get_clean();
 
