@@ -106,6 +106,7 @@ class FrontendQuestion {
 			return $content;
 		}
 
+        var_dump($renderable);
 
 		/**
 		 * @var $attached
