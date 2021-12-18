@@ -166,7 +166,6 @@ class FrontendQuestion {
                         <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
                         <div class="flex justify-center">
 
-	                        <?php wp_die(memory_get_usage());  ?>
 
 
                             <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
@@ -175,6 +174,9 @@ class FrontendQuestion {
         								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                                     </div>
         						<?php endif; ?>
+
+	                            <?php wp_die(memory_get_usage());  ?>
+
                                 <div>
                                     <p>
         								<?php echo get_the_excerpt( $attached['survey'] ) ?>
