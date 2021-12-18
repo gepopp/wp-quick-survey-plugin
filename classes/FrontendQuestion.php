@@ -160,9 +160,9 @@ class FrontendQuestion {
                 <div class="flex justify-center">
                     <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
 						<?php if ( has_post_thumbnail( $survey_id ) ): ?>
-<!--                            <div class="rounded-full flex-none border border-primary-100 w-24 h-24">-->
-<!--								--><?php //echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
-<!--                            </div>-->
+                            <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
+								<?php echo get_the_post_thumbnail( $survey_id, 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
+                            </div>
 						<?php endif; ?>
 <!--                        <div>-->
 <!--                            <p>-->
