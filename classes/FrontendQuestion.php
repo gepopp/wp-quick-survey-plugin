@@ -165,23 +165,16 @@ class FrontendQuestion {
         			<?php if ( $is_frontpage ): ?>
                         <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
                         <div class="flex justify-center">
-
-
-
                             <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
         						<?php if ( has_post_thumbnail( $attached['survey'] ) ): ?>
                                     <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
         								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                                     </div>
         						<?php endif; ?>
-
-
                                 <div>
-                                    <p>
-        								<?php echo get_the_excerpt( $attached['survey'] ) ?>
-                                    </p>
-	                                <?php wp_die(memory_get_usage());  ?>
-
+<!--                                    <p>-->
+<!--        								--><?php //echo get_the_excerpt( $attached['survey'] ) ?>
+<!--                                    </p>-->
                                 </div>
                             </div>
                         </div>
