@@ -15,7 +15,9 @@ class MetaBox {
 
 	public function add_survey_meta_box( $post_type ) {
 
-        if($post_type != 'quick_survey') return;
+		if ( $post_type != 'quick_survey' ) {
+			return;
+		}
 
 		add_meta_box(
 			'quick_sruvey_meta_box',
@@ -33,13 +35,20 @@ class MetaBox {
 		$value = get_post_meta( $post->ID, 'quick-survey-question', true );
 
 		$value = maybe_unserialize( $value );
-        if(!is_array($value)) $value = [];
+		if ( ! is_array( $value ) ) {
+			$value = [];
+		}
 
-        $value['id'] = $post->ID;
+		$value['id'] = $post->ID;
 
 		ob_start();
 		?>
         <div id="quick-survey-admin">
+            <div>
+                <code class="w-full">
+					<?php echo htmlspecialchars( '<iframe src="' ) ?><?php echo home_url() ?>/surveyframe/<?php echo $value['id'] ?><?php echo htmlspecialchars( '" witdth="600" height="800"></iframe>' ) ?>
+                </code>
+            </div>
             <survey :survey="<?php echo htmlspecialchars( json_encode( $value ), ENT_QUOTES, 'UTF-8' ); ?>"></survey>
         </div>
 		<?php

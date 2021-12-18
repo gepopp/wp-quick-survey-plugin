@@ -64,7 +64,7 @@
       <results :questions="questions" :survey="survey" :layout="layout" v-if="!isFrontpage"></results>
       <div v-else class="text-center">
         <h3 class="text-xl mb-3" v-text="surveyTitle"></h3>
-        <a :href="postLink" class="bg-primary-100 py-2 px-5 text-center text-white inline-block">Zu den Umfrageergebnissen</a>
+        <a :href="postLink" target="_blank" class="bg-primary-100 py-2 px-5 text-center text-white inline-block">Zu den Umfrageergebnissen</a>
       </div>
     </div>
 
