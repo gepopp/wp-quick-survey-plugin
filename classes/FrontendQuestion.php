@@ -6,10 +6,10 @@ class FrontendQuestion {
 
 
 	public function __construct() {
-		add_filter( 'the_content', [ $this, 'attach_survey' ] );
-		add_filter( 'the_content', [ $this, 'add_id' ] );
-		add_shortcode( 'quick-survey', [ $this, 'survey_shortcode' ] );
-		add_filter( 'post_thumbnail_html', [ $this, 'override_post_thumbnail' ], 10, 5 );
+//		add_filter( 'the_content', [ $this, 'attach_survey' ] );
+//		add_filter( 'the_content', [ $this, 'add_id' ] );
+//		add_shortcode( 'quick-survey', [ $this, 'survey_shortcode' ] );
+//		add_filter( 'post_thumbnail_html', [ $this, 'override_post_thumbnail' ], 10, 5 );
 
 	}
 
