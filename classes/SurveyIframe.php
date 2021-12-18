@@ -23,6 +23,15 @@ class SurveyIframe {
 			$sponsor = maybe_unserialize( get_post_meta( $survey_id, 'quick-survey-sponsor', true ) );
 			$answers = Answers::load_answers_by_survey( $survey_id );
 
+            global $wpdb;
+            $post_id = $wpdb->get_var('SELECT post_id FROM wp_postmeta WHERE meta_value LIKE "%' . $survey_id . '%" AND meta_key = "quick-survey-attach" LIMIT 1');
+
+            if(!empty($post_id)){
+                $permalink = get_permalink($post_id);
+            }else{
+                $permalink = home_url();
+            }
+
 			ob_start();
 			?>
 
@@ -53,7 +62,7 @@ class SurveyIframe {
                     gtag('config', 'UA-137371315-1');
                 </script>
             </head>
-            <body class="h-auto min-h-full" itemscope itemtype="https://schema.org/WebPage">
+            <body class="h-auto min-h-full bg-white" itemscope itemtype="https://schema.org/WebPage">
             <div class="p-10 bg-white" id="quick-survey">
                 <div class="p-5 h-full flex flex-col">
                     <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $survey_id ) ?></h3>
@@ -77,7 +86,7 @@ class SurveyIframe {
                         layout="paginate"
                         newsletter="yes"
                         :is-frontpage="true"
-                        post-link="<?php echo home_url() ?>"
+                        post-link="<?php echo $permalink ?>"
                         survey-title="<?php echo get_the_title( $survey_id ) ?>"
                         status="<?php echo $survey_meta['status'] ?>"
                 ></questions>
