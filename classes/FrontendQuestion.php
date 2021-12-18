@@ -136,15 +136,16 @@ class FrontendQuestion {
 			$answers = json_encode( $answers );
 		}
 
-//		$newsletter = $survey_meta['newsletter'];
-//		if ( $shortcode_newsletter != null ) {
-//			$newsletter = $shortcode_newsletter;
-//		}
+		$newsletter = $survey_meta['newsletter'];
+		if ( $shortcode_newsletter != null ) {
+			$newsletter = $shortcode_newsletter;
+		}
 
+        $is_frontpage = ! is_home() && ! is_front_page();
 
 		ob_start();
 		?>
-        <!--        <div class="p-5 --><?php //echo ( ! is_home() && ! is_front_page() ) ? 'bg-white' : 'h-full flex flex-col' ?><!--">-->
+        <!--        <div class="p-5 --><?php //echo (  ) ? 'bg-white' : 'h-full flex flex-col' ?><!--">-->
         <!--			--><?php //if ( ! is_home() && ! is_front_page() ): ?>
         <!--                <h3 class="text-xl font-semibold text-center mb-5">--><?php //echo get_the_title( $attached['survey'] ) ?><!--</h3>-->
         <!--                <div class="flex justify-center">-->
@@ -197,7 +198,7 @@ class FrontendQuestion {
         <!--                    </div>-->
         <!--				--><?php //endif; ?>
         <!--            </div>-->
-<!--        </div>-->
+        <!--        </div>-->
 		<?php
 		$content .= ob_get_clean();
 
