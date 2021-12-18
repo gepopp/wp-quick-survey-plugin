@@ -181,7 +181,7 @@ class FrontendQuestion {
 <!--                            </div>-->
 <!--                        </div>-->
 <!--        			--><?php //endif; ?>
-<!--	                --><?php //        var_dump(memory_get_peak_usage()); ?>
+	                <?php         var_dump(memory_get_peak_usage()); ?>
 
                         <questions
                                 :questions="<?php echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?>"
@@ -194,6 +194,7 @@ class FrontendQuestion {
                                 survey-title="<?php echo get_the_title( $attached['survey'] ) ?>"
                                 status="<?php echo $survey_meta['status'] ?>"
                         ></questions>
+	                <?php         var_dump(memory_get_peak_usage()); ?>
 
 
         <!--            <div class="flex flex-col items-center pt-5 mt-auto">-->
