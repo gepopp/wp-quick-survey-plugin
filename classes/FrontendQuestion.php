@@ -106,15 +106,14 @@ class FrontendQuestion {
 			return $content;
 		}
 
-        var_dump($renderable);
 
 		/**
 		 * @var $attached
 		 * @var $survey_meta
 		 */
-//		extract( $renderable );
-//
-//		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
+		extract( $renderable );
+
+		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 //
 //		$answers = Answers::load_answers_by_survey( $attached['survey'] );
 //
