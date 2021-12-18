@@ -171,13 +171,13 @@ class FrontendQuestion {
                                     <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
         								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                                     </div>
-<!--                    --><?php //        var_dump(memory_get_peak_usage()); ?>
+                    <?php         var_dump(memory_get_peak_usage()); ?>
         						<?php endif; ?>
-<!--                                <div>-->
-<!--                                    <p>-->
+                                <div>
+                                    <p>
 <!--        								--><?php //echo get_the_excerpt( $attached['survey'] ) ?>
-<!--                                    </p>-->
-<!--                                </div>-->
+                                    </p>
+                                </div>
                             </div>
                         </div>
         			<?php endif; ?>
