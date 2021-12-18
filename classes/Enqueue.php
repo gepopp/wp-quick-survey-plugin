@@ -91,7 +91,6 @@ class Enqueue {
 		wp_enqueue_script( 'campaign_monitor', 'https://js.createsend1.com/javascript/copypastesubscribeformlogic.js' );
 
 		wp_enqueue_script( 'quick_survey_script', QSY_URL . "dist/main{$ext}.js", [], QSY_VERSION, true );
-//		wp_localize_script( 'quick_survey_script', 'qsy_translations' );
 		wp_localize_script( 'quick_survey_script', 'qsy_xhr', [
 			'rootapiurl' => esc_url_raw( rest_url() ),
 			'nonce'      => wp_create_nonce( 'wp_rest' ),
