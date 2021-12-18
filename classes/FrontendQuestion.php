@@ -156,7 +156,7 @@ class FrontendQuestion {
 
 
 		ob_start();
-		wp_die(memory_get_usage());
+
 
 		?>
                 <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
@@ -176,7 +176,7 @@ class FrontendQuestion {
                                 </div>
                             </div>
                         </div>
-        			<?php endif;  ?>
+        			<?php endif; wp_die(memory_get_usage()); ?>
 
         <!--                <questions-->
         <!--                        :questions="--><?php //echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?><!--"-->
