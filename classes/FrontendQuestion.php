@@ -104,6 +104,8 @@ class FrontendQuestion {
 			$post_id = $post->ID;
 		}
 
+        if(get_post_type($post_id) == 'quick_survey') return $content;
+
 		$renderable = $this->survey_renderable( $post_id );
 
 		if ( ! $renderable ) {
@@ -153,7 +155,7 @@ class FrontendQuestion {
 
 		$survey_id = $attached['survey'];
 
-		$has_excerpt   = has_excerpt( $survey_id );
+		$has_excerpt   = true; //has_excerpt( $survey_id );
 		$has_thumbnail = has_post_thumbnail( $survey_id );
 
 		ob_start();
