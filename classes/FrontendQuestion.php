@@ -115,6 +115,9 @@ class FrontendQuestion {
 
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
+        wp_die(memory_get_usage());
+
+
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
 
 		if ( $question ) {
