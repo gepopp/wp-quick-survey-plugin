@@ -9,7 +9,7 @@ class FrontendQuestion {
 		add_filter( 'the_content', [ $this, 'attach_survey' ] );
 		add_filter( 'the_content', [ $this, 'add_id' ] );
 		add_shortcode( 'quick-survey', [ $this, 'survey_shortcode' ] );
-		//add_filter( 'post_thumbnail_html', [ $this, 'override_post_thumbnail' ], 10, 5 );
+		add_filter( 'post_thumbnail_html', [ $this, 'override_post_thumbnail' ], 10, 5 );
 
 	}
 
@@ -115,12 +115,8 @@ class FrontendQuestion {
 
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
-		//40580096
-
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
-
-		//40807512
 
 
 		if ( $question ) {
@@ -142,8 +138,6 @@ class FrontendQuestion {
 			$answers = json_encode( $answers );
 		}
 
-		//40580096
-		//209715200
 
 		$newsletter = $survey_meta['newsletter'];
 		if ( $shortcode_newsletter != null ) {
@@ -155,21 +149,18 @@ class FrontendQuestion {
 
 		ob_start();
 
-		var_dump( memory_get_peak_usage() );
 		?>
         <div class="p-5 <?php echo ( ! $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
 
 
 			<?php if ( ! $is_frontpage ): ?>
                 <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
-                <!--                    --><?php //        var_dump(memory_get_peak_usage()); ?>
                 <div class="flex justify-center">
                     <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
 						<?php if ( has_post_thumbnail( $attached['survey'] ) ): ?>
                             <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
 								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                             </div>
-							<?php var_dump( memory_get_peak_usage() ); ?>
 						<?php endif; ?>
                         <div>
                             <p>
@@ -179,7 +170,6 @@ class FrontendQuestion {
                     </div>
                 </div>
 			<?php endif; ?>
-			<?php var_dump( memory_get_peak_usage() ); ?>
 
             <questions
                     :questions="<?php echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?>"
@@ -192,30 +182,27 @@ class FrontendQuestion {
                     survey-title="<?php echo get_the_title( $attached['survey'] ) ?>"
                     status="<?php echo $survey_meta['status'] ?>"
             ></questions>
-			<?php var_dump( memory_get_peak_usage() ); ?>
-
-
-            <!--            <div class="flex flex-col items-center pt-5 mt-auto">-->
-            <!--				--><?php //if ( $sponsor['active'] == 'yes' ): ?>
-            <!--                    <a href="--><?php //echo $sponsor['url'] ?><!--" class="flex items-center text-black">-->
-            <!--                        <span class="mr-5">--><?php //echo $sponsor['text'] ?><!--</span>-->
-            <!--						--><?php //echo wp_get_attachment_image( $sponsor['logo'], 'thumbnail', null, [
-			//							'class' => 'w-10 h-10',
-			//							'style' => 'margin: 0 !important',
-			//						] ) ?>
-            <!--                    </a>-->
-            <!--				--><?php //else: ?>
-            <!--                    <div class="flex items-center text-black">-->
-            <!--                        <span>made with</span>-->
-            <!--                        <div class="px-2">-->
-            <!--                            <svg class="w-6 h-6" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">-->
-            <!--                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>-->
-            <!--                            </svg>-->
-            <!--                        </div>-->
-            <!--                        <span>by <a href="https://poppgerhard.at">poppgerhard</a> </span>-->
-            <!--                    </div>-->
-            <!--				--><?php //endif; ?>
-            <!--            </div>-->
+            <div class="flex flex-col items-center pt-5 mt-auto">
+				<?php if ( $sponsor['active'] == 'yes' ): ?>
+                    <a href="<?php echo $sponsor['url'] ?>" class="flex items-center text-black">
+                        <span class="mr-5"><?php echo $sponsor['text'] ?></span>
+						<?php echo wp_get_attachment_image( $sponsor['logo'], 'thumbnail', null, [
+							'class' => 'w-10 h-10',
+							'style' => 'margin: 0 !important',
+						] ) ?>
+                    </a>
+				<?php else: ?>
+                    <div class="flex items-center text-black">
+                        <span>made with</span>
+                        <div class="px-2">
+                            <svg class="w-6 h-6" fill="red" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                            </svg>
+                        </div>
+                        <span>by <a href="https://poppgerhard.at">poppgerhard</a> </span>
+                    </div>
+				<?php endif; ?>
+            </div>
         </div>
 		<?php
 		$content .= ob_get_clean();

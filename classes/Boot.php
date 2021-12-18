@@ -13,7 +13,7 @@ class Boot {
 		MetaBox::class,
 		SponsorMetaBox::class,
 		AnswersMetaBox::class,
-		AttachMetaBox::class,
+		//SAttachMetaBox::class,
 		FrontendQuestion::class,
 		Tables::class,
 		Answers::class,
