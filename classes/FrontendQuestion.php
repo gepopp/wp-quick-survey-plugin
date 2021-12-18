@@ -143,7 +143,7 @@ class FrontendQuestion {
 		}
 
 		//40580096
-
+       //209715200
 
 		$newsletter = $survey_meta['newsletter'];
 		if ( $shortcode_newsletter != null ) {
@@ -162,23 +162,23 @@ class FrontendQuestion {
                 <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
 
 
-        			<?php if ( $is_frontpage ): ?>
-                        <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
-                        <div class="flex justify-center">
-                            <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
-        						<?php if ( has_post_thumbnail( $attached['survey'] ) ): ?>
-                                    <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
-        								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
-                                    </div>
-        						<?php endif; ?>
-                                <div>
+<!--        			--><?php //if ( $is_frontpage ): ?>
+<!--                        <h3 class="text-xl font-semibold text-center mb-5">--><?php //echo get_the_title( $attached['survey'] ) ?><!--</h3>-->
+<!--                        <div class="flex justify-center">-->
+<!--                            <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">-->
+<!--        						--><?php //if ( has_post_thumbnail( $attached['survey'] ) ): ?>
+<!--                                    <div class="rounded-full flex-none border border-primary-100 w-24 h-24">-->
+<!--        								--><?php //echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
+<!--                                    </div>-->
+<!--        						--><?php //endif; ?>
+<!--                                <div>-->
 <!--                                    <p>-->
 <!--        								--><?php //echo get_the_excerpt( $attached['survey'] ) ?>
 <!--                                    </p>-->
-                                </div>
-                            </div>
-                        </div>
-        			<?php endif; ?>
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--        			--><?php //endif; ?>
 
         <!--                <questions-->
         <!--                        :questions="--><?php //echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?><!--"-->
