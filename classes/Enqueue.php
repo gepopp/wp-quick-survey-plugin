@@ -16,7 +16,7 @@ class Enqueue {
 	public function enqueue_admin_scripts() {
 
 
-		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.min.js', [], QSY_VERSION, true );
+		wp_register_script( 'quick_survey_admin', QSY_URL . 'dist/survey_admin.js', ['jquery'], QSY_VERSION, true );
 		wp_localize_script( 'quick_survey_admin', 'translations', [
 			'status'              => __( 'Umfrage Status', 'quick-survey' ),
 			'open'                => __( 'Offen', 'quick-survey' ),
@@ -51,6 +51,13 @@ class Enqueue {
 			'answerlabel'         => __( 'Auswahl', 'quick-survey' ),
 			'textquestionlabel'   => __( 'Textfrage', 'quick-survey' ),
 		] );
+
+		wp_localize_script( 'quick_survey_admin', 'qsy_xhr', [
+			'rootapiurl' => esc_url_raw( rest_url() ),
+			'nonce'      => wp_create_nonce( 'wp_rest' ),
+			'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+		] );
+
 		wp_enqueue_script( 'quick_survey_admin' );
 
 

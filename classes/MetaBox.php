@@ -34,6 +34,7 @@ class MetaBox {
 
 		$value = maybe_unserialize( $value );
 
+        $value['id'] = $post->ID;
 
 		ob_start();
 		?>

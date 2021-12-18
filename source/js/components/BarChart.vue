@@ -42,20 +42,6 @@ export default {
     this.renderChart(this.chartData, this.options)
   },
   methods: {
-    updateChardata(values) {
-      this.chartData = {
-        labels: this.labels,
-        datasets: [{
-          label: '',
-          data: values,
-          backgroundColor: [
-            '#064E3B',
-            '#7F1D1D',
-          ],
-          borderWidth: 0
-        }]
-      };
-    }
   }
 }
 </script>

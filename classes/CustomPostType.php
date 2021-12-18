@@ -48,7 +48,7 @@ class CustomPostType {
 			'label'                 => __( 'Quick Survey', 'quick-survey' ),
 			'description'           => __( 'Survey Questions attached to posts', 'quick-survey' ),
 			'labels'                => $labels,
-			'supports'              => array( 'title', 'thumbnail' ),
+			'supports'              => array( 'title', 'thumbnail', 'excerpt' ),
 			'hierarchical'          => false,
 			'public'                => true,
 			'show_ui'               => true,

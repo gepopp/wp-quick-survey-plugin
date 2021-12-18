@@ -1,31 +1,28 @@
 <template>
   <div>
-    <div class="flex flex-col justify-center items-center my-10 pb-10 border-b border-gray-900">
-      <h1 class="text-xl font-bold" v-text="question.question"></h1>
-      <p v-text="question.description"></p>
-      <div class="w-full" v-if="!is_answered">
-        <vue-slide-bar
-            :data="createSteps"
-            :range="labels"
-            :processStyle="sliderCustomzie.processStyle"
-            :lineHeight="sliderCustomzie.lineHeight"
-            :tooltipStyles="sliderCustomzie.tooltipStyles"
-            v-model="rangevalue"
-        ></vue-slide-bar>
-        <div class="flex justify-between -mt-5 text-xs">
-          <div v-text="question.mintext"></div>
-          <div v-text="question.midtext"></div>
-          <div v-text="question.maxtext"></div>
-        </div>
-
-        <div class="w-full mt-4 py-3 bg-primary-100 text-white text-center cursor-pointer" @click="AnswerFunctions.saveAnswer(rangevalue)">
-          antworten
-        </div>
+    <div class="w-full" v-if="!isAnswered">
+      <vue-slide-bar
+          :data="createSteps"
+          :range="labels"
+          :processStyle="sliderCustomzie.processStyle"
+          :lineHeight="sliderCustomzie.lineHeight"
+          :tooltipStyles="sliderCustomzie.tooltipStyles"
+          v-model="rangevalue"
+      ></vue-slide-bar>
+      <div class="flex justify-between -mt-5 text-xs">
+        <div v-text="question.mintext"></div>
+        <div v-text="question.midtext"></div>
+        <div v-text="question.maxtext"></div>
       </div>
-      <div v-else>
-        <p class="text-green-800">Vielen Dank, ihre Antwort wurde gespeichert.</p>
+
+      <div class="block w-full mt-4 py-3 bg-primary-100 text-white text-center cursor-pointer"
+           @click="AnswerFunctions.saveAnswer(rangevalue)"
+           style="z-index: 99999"
+      >
+        antworten
       </div>
     </div>
+    <question-answered v-else></question-answered>
   </div>
 </template>
 
@@ -33,15 +30,19 @@
 import VueSlideBar from 'vue-slide-bar'
 import LineChart from "./LineChart.vue";
 import AnswerFunctions from "../AnswerFunctions.js"
+import QuestionAnswered from "./QuestionAnswered.vue";
 
 export default {
   name: "RangeQuestion",
-  components: {VueSlideBar, LineChart},
-  props: ['question'],
+  components: {
+    QuestionAnswered,
+    VueSlideBar,
+    LineChart
+  },
+  props: ['question', 'isAnswered'],
   data() {
     return {
       answer: false,
-      is_answered: false,
       AnswerFunctions: new AnswerFunctions(this),
       rangevalue: this.min,
       saveTimeout: null,
@@ -56,13 +57,6 @@ export default {
         }
       }
     }
-  },
-  mounted() {
-
-    this.is_answered = this.AnswerFunctions.updateStatus();
-    this.$parent.$on('answer_saved', () => this.is_answered = this.AnswerFunctions.updateStatus());
-
-
   },
   computed: {
     createSteps() {
@@ -84,9 +78,6 @@ export default {
       });
       return labels;
     }
-  },
-  renderTracked() {
-    window.dispatchEvent(new Event('resize'));
   }
 }
 </script>

@@ -1,49 +1,36 @@
 <template>
-  <div>
-    <div class="flex flex-col justify-center items-center my-10 pb-10 border-b border-gray-900">
-      <h1 class="text-xl font-bold" v-text="question.question"></h1>
-      <p v-text="question.description"></p>
-      <div class="mt-5 flex justify-center space-x-3 w-full" v-if="!is_answered">
-        <button class="px-5 py-3 text-white text-center w-full"
-                :style="{ backgroundColor:  question.colors[0] }"
-                v-text="question.green"
-                @click="AnswerFunctions.saveAnswer(question.green)"
-                v-show="!answer || answer == question.green"
-        ></button>
-        <button class="px-5 py-3 text-white text-center w-full"
-                :style="{ backgroundColor:  question.colors[1] }"
-                v-text="question.red"
-                @click="AnswerFunctions.saveAnswer(question.red)"
-                v-show="!answer || answer == question.red"
-        ></button>
-      </div>
-      <div v-else>
-        <p class="text-green-800">Vielen Dank, ihre Antwort wurde gespeichert.</p>
-      </div>
+  <div class="w-full">
+    <div class="mt-5 flex justify-center space-x-3 w-full" v-if="!isAnswered">
+      <button class="px-5 py-3 text-white text-center w-full"
+              :style="{ backgroundColor:  question.colors[0] }"
+              v-text="question.green"
+              @click="AnswerFunctions.saveAnswer(question.green)"
+      ></button>
+      <button class="px-5 py-3 text-white text-center w-full"
+              :style="{ backgroundColor:  question.colors[1] }"
+              v-text="question.red"
+              @click="AnswerFunctions.saveAnswer(question.red)"
+      ></button>
     </div>
+    <question-answered v-else></question-answered>
   </div>
 </template>
 
 <script>
 import AnswerFunctions from "../AnswerFunctions.js"
+import BarChart from "./BarChart.vue";
+import QuestionAnswered from "./QuestionAnswered.vue";
 
 
 export default {
   name: "SimpleQuestion",
-  props: ['question'],
+  components: {QuestionAnswered, BarChart},
+  props: ['question', 'isAnswered'],
   data() {
     return {
-      answer: false,
-      is_answered : false,
-      AnswerFunctions : new AnswerFunctions(this)
+      AnswerFunctions: new AnswerFunctions(this),
     }
-  },
-  mounted() {
-
-    this.is_answered = this.AnswerFunctions.updateStatus();
-    this.$parent.$on('answer_saved', () => this.is_answered = this.AnswerFunctions.updateStatus());
-
-  },
+  }
 }
 </script>
 

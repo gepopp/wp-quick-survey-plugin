@@ -12,6 +12,7 @@ class Boot {
 		Enqueue::class,
 		MetaBox::class,
 		SponsorMetaBox::class,
+		AnswersMetaBox::class,
 		AttachMetaBox::class,
 		FrontendQuestion::class,
 		Tables::class,

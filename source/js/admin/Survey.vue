@@ -31,7 +31,11 @@
     <div class="border border-gray-500 flex flex-col p-5 wrapper" id="dragable">
       <div class="border border-gray-500 p-5 bg-white wrapper" v-for="(question, index) in questions" :key="question.id">
         <div class="flex justify-between">
-          <div class="font-bold text-xl" v-text="question.question != '' ? question.question : 'Noch keine Frage eingegeben'"></div>
+          <div class="font-bold text-xl">
+            <span v-text="question.question != '' ? question.question : 'Noch keine Frage eingegeben'"></span>
+
+          </div>
+          <span v-text="question.id" ></span>
           <div class="flex space-x-5">
             <div @click="$emit('collapse', { id: question.id })" class="flex flex-col">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +59,7 @@
           </div>
         </div>
         <hr>
-        <question :question="question"></question>
+        <question :question="question" :survey_id="survey.id"></question>
       </div>
     </div>
     <div class="border border-black flex justify-end p-5">
@@ -125,8 +129,10 @@ export default {
 
   },
   methods: {
-    addQuestion() {
-      this.questions.push({type: 'truefalse', id: Date.now()})
+    async addQuestion() {
+      this.questions.push({type: 'truefalse', id: Date.now()});
+      await this.$nextTick();
+      jQuery('.color-picker').wpColorPicker();
     },
     removeQuestion(id) {
       this.questions = this.questions.filter((question) => {

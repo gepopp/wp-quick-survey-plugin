@@ -18,6 +18,7 @@ module.exports = {
     variants: {},
     plugins: [
         require('tailwind-scrollbar'),
+        require('@tailwindcss/line-clamp'),
         require('@tailwindcss/custom-forms'),
     ],
 }
