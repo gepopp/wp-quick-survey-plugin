@@ -176,7 +176,7 @@ class FrontendQuestion {
                                 </div>
                             </div>
                         </div>
-        			<?php endif; wp_die(memory_get_usage()); ?>
+        			<?php endif;  ?>
 
         <!--                <questions-->
         <!--                        :questions="--><?php //echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?><!--"-->
@@ -216,6 +216,7 @@ class FrontendQuestion {
 		<?php
 		$content .= ob_get_clean();
 
+		wp_die(memory_get_usage());
 
 		return $content;
 	}
