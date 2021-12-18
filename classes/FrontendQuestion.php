@@ -156,6 +156,7 @@ class FrontendQuestion {
 
 
 		ob_start();
+		wp_die(memory_get_usage());
 
 		?>
                 <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
