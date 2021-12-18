@@ -150,7 +150,7 @@ class FrontendQuestion {
 			$newsletter = $shortcode_newsletter;
 		}
 
-        $is_frontpage = ! is_home() && ! is_front_page();
+        $is_frontpage = is_home() || is_front_page();
 
 
 
