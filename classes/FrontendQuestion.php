@@ -116,26 +116,26 @@ class FrontendQuestion {
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
-//
-//		if ( $question ) {
-//			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
-//				if ( (int) $question != $id ) {
-//					unset( $survey_meta['questions'][ $id ] );
-//				}
-//			}
-//
-//			$answers = json_decode( $answers );
-//
-//
-//			foreach ( $answers->answered as $index => $answer ) {
-//				if ( $answer != $question ) {
-//					unset( $answers->answered[ $index ] );
-//				}
-//			}
-//
-//			$answers = json_encode( $answers );
-//		}
-//
+
+		if ( $question ) {
+			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
+				if ( (int) $question != $id ) {
+					unset( $survey_meta['questions'][ $id ] );
+				}
+			}
+
+			$answers = json_decode( $answers );
+
+
+			foreach ( $answers->answered as $index => $answer ) {
+				if ( $answer != $question ) {
+					unset( $answers->answered[ $index ] );
+				}
+			}
+
+			$answers = json_encode( $answers );
+		}
+
 //		$newsletter = $survey_meta['newsletter'];
 //		if ( $shortcode_newsletter != null ) {
 //			$newsletter = $shortcode_newsletter;
