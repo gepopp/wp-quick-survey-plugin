@@ -163,7 +163,8 @@ class FrontendQuestion {
 
 
 <!--        			--><?php //if ( $is_frontpage ): ?>
-<!--                        <h3 class="text-xl font-semibold text-center mb-5">--><?php //echo get_the_title( $attached['survey'] ) ?><!--</h3>-->
+                        <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $attached['survey'] ) ?></h3>
+                    <?php         var_dump(memory_get_peak_usage()); ?>
 <!--                        <div class="flex justify-center">-->
 <!--                            <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">-->
 <!--        						--><?php //if ( has_post_thumbnail( $attached['survey'] ) ): ?>
