@@ -104,9 +104,6 @@ class FrontendQuestion {
 
 		$renderable = $this->survey_renderable( $post_id );
 
-        wp_die(var_dump($renderable));
-
-
 		if ( ! $renderable ) {
 			return $content;
 		}
@@ -120,6 +117,7 @@ class FrontendQuestion {
 
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
+        wp_die(var_dump($sponsor));
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
 
