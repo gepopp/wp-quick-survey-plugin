@@ -104,6 +104,9 @@ class FrontendQuestion {
 
 		$renderable = $this->survey_renderable( $post_id );
 
+        wp_die(var_dump($renderable));
+
+
 		if ( ! $renderable ) {
 			return $content;
 		}
