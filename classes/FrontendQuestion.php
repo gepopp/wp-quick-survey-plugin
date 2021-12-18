@@ -169,7 +169,7 @@ class FrontendQuestion {
                             <div class="flex space-x-10 items-center mb-5 pb-5 border-b border-gray-800">
         						<?php if ( has_post_thumbnail( $attached['survey'] ) ): ?>
                                     <div class="rounded-full flex-none border border-primary-100 w-24 h-24">
-<!--        								--><?php //echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
+        								<?php echo get_the_post_thumbnail( $attached['survey'], 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                                     </div>
 <!--                    --><?php //        var_dump(memory_get_peak_usage()); ?>
         						<?php endif; ?>
