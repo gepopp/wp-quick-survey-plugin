@@ -33,6 +33,7 @@ class MetaBox {
 		$value = get_post_meta( $post->ID, 'quick-survey-question', true );
 
 		$value = maybe_unserialize( $value );
+        if(!is_array($value)) $value = [];
 
         $value['id'] = $post->ID;
 
