@@ -163,17 +163,17 @@ class FrontendQuestion {
                 </div>
 			<?php endif; ?>
 
-                <questions
-                        :questions="<?php echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?>"
-                        :answers-given="<?php echo htmlentities( $answers ) ?>"
-                        :survey="<?php echo $attached['survey'] ?>"
-                        layout="<?php echo is_home() || is_front_page() ? 'paginate' : $attached['layout'] ?>"
-                        newsletter="<?php echo $newsletter ?>"
-                        :is-frontpage="<?php echo is_home() || is_front_page() ? 'true' : 'false' ?>"
-                        post-link="<?php echo get_the_permalink( $post_id ) ?>"
-                        survey-title="<?php echo get_the_title( $attached['survey'] ) ?>"
-                        status="<?php echo $survey_meta['status'] ?>"
-                ></questions>
+<!--                <questions-->
+<!--                        :questions="--><?php //echo htmlentities( json_encode( $survey_meta['questions'] ) ) ?><!--"-->
+<!--                        :answers-given="--><?php //echo htmlentities( $answers ) ?><!--"-->
+<!--                        :survey="--><?php //echo $attached['survey'] ?><!--"-->
+<!--                        layout="--><?php //echo is_home() || is_front_page() ? 'paginate' : $attached['layout'] ?><!--"-->
+<!--                        newsletter="--><?php //echo $newsletter ?><!--"-->
+<!--                        :is-frontpage="--><?php //echo is_home() || is_front_page() ? 'true' : 'false' ?><!--"-->
+<!--                        post-link="--><?php //echo get_the_permalink( $post_id ) ?><!--"-->
+<!--                        survey-title="--><?php //echo get_the_title( $attached['survey'] ) ?><!--"-->
+<!--                        status="--><?php //echo $survey_meta['status'] ?><!--"-->
+<!--                ></questions>-->
 
 
 
