@@ -115,10 +115,13 @@ class FrontendQuestion {
 
 		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
 
-        wp_die(memory_get_usage());
+        //40580096
 
 
 		$answers = Answers::load_answers_by_survey( $attached['survey'] );
+
+        //40807512
+
 
 		if ( $question ) {
 			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
@@ -139,6 +142,10 @@ class FrontendQuestion {
 			$answers = json_encode( $answers );
 		}
 
+		//40580096
+
+		wp_die(memory_get_usage());
+
 		$newsletter = $survey_meta['newsletter'];
 		if ( $shortcode_newsletter != null ) {
 			$newsletter = $shortcode_newsletter;
@@ -146,7 +153,11 @@ class FrontendQuestion {
 
         $is_frontpage = ! is_home() && ! is_front_page();
 
+
+
+
 		ob_start();
+		wp_die(memory_get_usage());
 		?>
                 <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
         			<?php if ( $is_frontpage ): ?>
