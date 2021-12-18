@@ -53,7 +53,7 @@ class SurveyIframe {
                     gtag('config', 'UA-137371315-1');
                 </script>
             </head>
-            <body itemscope itemtype="https://schema.org/WebPage">
+            <body class="h-auto min-h-full" itemscope itemtype="https://schema.org/WebPage">
             <div class="p-10 bg-white" id="quick-survey">
                 <div class="p-5 h-full flex flex-col">
                     <h3 class="text-xl font-semibold text-center mb-5"><?php echo get_the_title( $survey_id ) ?></h3>
