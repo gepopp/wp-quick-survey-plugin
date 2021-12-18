@@ -164,11 +164,11 @@ class FrontendQuestion {
 								<?php echo get_the_post_thumbnail( $survey_id, 'thumbnail', [ 'class' => 'p-2 rounded-full' ] ); ?>
                             </div>
 						<?php endif; ?>
-<!--                        <div>-->
-<!--                            <p>-->
-<!--								--><?php //echo get_the_excerpt( $attached['survey'] ) ?>
-<!--                            </p>-->
-<!--                        </div>-->
+                        <div>
+                            <p>
+								<?php echo get_the_excerpt( $survey_id) ?>
+                            </p>
+                        </div>
                     </div>
                 </div>
 			<?php endif; ?>
