@@ -140,15 +140,14 @@ class FrontendQuestion {
 			$answers = json_encode( $answers );
 		}
 
-		wp_die(var_dump($answers));
-
-
 		$newsletter = $survey_meta['newsletter'];
 		if ( $shortcode_newsletter != null ) {
 			$newsletter = $shortcode_newsletter;
 		}
 
 		$is_frontpage = is_home() || is_front_page();
+
+		wp_die(var_dump($is_frontpage));
 
 
 		ob_start();
