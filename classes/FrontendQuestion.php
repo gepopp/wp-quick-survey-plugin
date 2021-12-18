@@ -66,6 +66,8 @@ class FrontendQuestion {
 
 	public function survey_renderable( $post_id ) {
 
+        if(is_admin()) return false;
+
 		$attached = get_post_meta( $post_id, 'quick-survey-attach', true );
 		$attached = maybe_unserialize( $attached );
 
