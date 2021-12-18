@@ -111,11 +111,11 @@ class FrontendQuestion {
 		 * @var $attached
 		 * @var $survey_meta
 		 */
-//		extract( $renderable );
-//
-//		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
-//
-//		$answers = Answers::load_answers_by_survey( $attached['survey'] );
+		extract( $renderable );
+
+		$sponsor = maybe_unserialize( get_post_meta( $attached['survey'], 'quick-survey-sponsor', true ) );
+
+		$answers = Answers::load_answers_by_survey( $attached['survey'] );
 //
 //		if ( $question ) {
 //			foreach ( $survey_meta['questions'] as $id => $survey_question ) {
