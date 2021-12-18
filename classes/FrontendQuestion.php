@@ -159,7 +159,7 @@ class FrontendQuestion {
 
         var_dump(memory_get_peak_usage());
 		?>
-                <div class="p-5 <?php echo ( $is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
+                <div class="p-5 <?php echo ( !$is_frontpage ) ? 'bg-white' : 'h-full flex flex-col' ?>">
 
 
 <!--        			--><?php //if (! $is_frontpage ): ?>
