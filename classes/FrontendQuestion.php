@@ -101,7 +101,7 @@ class FrontendQuestion {
 
 		if ( ! $post_id ) {
 			global $post;
-			$post_id = $post->ID;
+			$post_id = $post->ID ?? null;
 		}
 
 		$renderable = $this->survey_renderable( $post_id );
