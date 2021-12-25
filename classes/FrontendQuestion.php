@@ -22,6 +22,10 @@ class FrontendQuestion {
 
 		$renderable = $this->survey_renderable( $post_id );
 
+        $meta = get_option('quick-survey-attach');
+
+        var_dump($meta);
+
 		if ( ! $renderable ) {
 			return $html;
 		}
