@@ -22,9 +22,10 @@ class FrontendQuestion {
 
 		$renderable = $this->survey_renderable( $post_id );
 
-        $meta = get_post_meta($post_id, 'quick-survey-attach');
+        $meta = maybe_unserialize(get_post_meta($post_id, 'quick-survey-attach'));
 
-        var_dump($meta);
+        if(!isset($meta['replacepreview']) || $meta['replacepreview'] != 'yes') return $html;
+
 
 		if ( ! $renderable ) {
 			return $html;
