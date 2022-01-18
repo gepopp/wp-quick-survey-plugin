@@ -14,15 +14,15 @@
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.mintextlabel }}</label>
-      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][mintext]'" v-model="merged.minlabel">
+      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][mintext]'" v-model="merged.mintext">
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.midtextlabel }}</label>
-      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][midtext]'" v-model="merged.midlabel">
+      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][midtext]'" v-model="merged.midtext">
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold">{{ translations.maxtextlabel }}</label>
-      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][maxtext]'" v-model="merged.maxlabel">
+      <input type="text" class="block w-full border border-black" :name="'qsy[questions][' + merged.id + '][maxtext]'" v-model="merged.maxtext">
     </div>
     <div class="mb-4">
       <label class="mb-3 font-semibold block">{{ translations.barcolorlabel }}</label>
@@ -42,9 +42,9 @@ export default {
         min: 1,
         max: 10,
         step: 1,
-        minlabel: 'Nichts',
-        midlabel: 'Die Hälfte',
-        maxlabel: 'Alles',
+        mintext: 'Nichts',
+        midtext: 'Die Hälfte',
+        maxtext: 'Alles',
         colors: ['#5c97d0']
       }
     }

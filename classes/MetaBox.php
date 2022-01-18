@@ -49,6 +49,7 @@ class MetaBox {
 					<?php echo htmlspecialchars( '<iframe src="' ) ?><?php echo home_url() ?>/surveyframe/<?php echo $value['id'] ?><?php echo htmlspecialchars( '" witdth="600" height="400"></iframe>' ) ?>
                 </code>
             </div>
+
             <survey :survey="<?php echo htmlspecialchars( json_encode( $value ), ENT_QUOTES, 'UTF-8' ); ?>"></survey>
         </div>
 		<?php
